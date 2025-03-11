@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
 
   receivedTasks: Task[] = [];
 
-  displayedColumns : string[] = ['name' , 'completed'];
+  displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress'];
 
   ngOnInit(): void {
     

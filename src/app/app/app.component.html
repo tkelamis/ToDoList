@@ -18,6 +18,24 @@
     </td>
   </ng-container>
 
+  <!-- Cost Column -->
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef> Cost </th>
+    <td mat-cell *matCellDef="let task"> {{ task.cost | currency:'EUR':'symbol-narrow'  }} </td>
+  </ng-container>
+
+   <!-- Date Column -->
+   <ng-container matColumnDef="date started">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let task"> {{ task.date | date }} </td>
+  </ng-container>
+
+  <!-- Progress Column -->
+  <ng-container matColumnDef="progress">
+    <th mat-header-cell *matHeaderCellDef> Progress </th>
+    <td mat-cell *matCellDef="let task"> {{ task.completionPercentage | percent  }} </td>
+  </ng-container>
+
   <!-- Table Header and Rows -->
   <thead>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
