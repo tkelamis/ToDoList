@@ -1,0 +1,32 @@
+<app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
+
+
+<table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
+  
+  <!-- Task Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Task Name </th>
+    <td mat-cell *matCellDef="let task"> {{ task.name }} </td>
+  </ng-container>
+
+  <!-- Completed Column -->
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef> Completed </th>
+    <td mat-cell *matCellDef="let task" [appCompletedHighlight]="task.completed">
+      <mat-icon *ngIf="task.completed"> check_circle </mat-icon>
+      <mat-icon *ngIf="!task.completed"> cancel </mat-icon>
+    </td>
+  </ng-container>
+
+  <!-- Table Header and Rows -->
+  <thead>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  </thead>
+  <tbody>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </tbody>
+
+</table>
+
+
+<router-outlet />

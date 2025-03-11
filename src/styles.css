@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background:url('../public/images/main-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .todo-card {
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Add transparency if needed */
+  }
