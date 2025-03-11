@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../interfaces/task';
 import { TasksComponent } from '../tasks/tasks.component';
-import { CompletedHighlightDirective } from '../directives/completed-highlight.directive';
+import { CompletedHighlightDirective } from '../directives/completed-highlighted/completed-highlight.directive';
 
 @Component({
   selector: 'app-root',
