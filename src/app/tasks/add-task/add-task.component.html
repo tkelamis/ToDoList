@@ -1,0 +1,21 @@
+<div style="display:flex; flex-direction:column; padding:50px; justify-content:center; align-items:center; background-color: lightgoldenrodyellow;">
+    <h3>Add Task</h3>
+    <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
+      <mat-form-field appearance="fill">
+        <mat-label>Task Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cost</mat-label>
+        <input matInput formControlName="cost" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="date" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <input matInput formControlName="priority" />
+      </mat-form-field>
+      <button style="margin-top:30px" type="button" class="btn btn-primary">Back to Home</button>
+    </form>

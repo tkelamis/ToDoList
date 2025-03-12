@@ -10,3 +10,14 @@ body {
     width: 100%;
     background: rgba(255, 255, 255, 0.8); /* Add transparency if needed */
   }
+
+  .app-header{
+    font-size: 24px !important;
+    font-weight: bold !important;
+    padding: 10px 20px !important;
+    background: linear-gradient(45deg, #db56f3, #1b1f3b) !important;
+    color: white !important;
+    border-radius: 12px !important;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) !important;
+    display: inline-block !important;
+  }

@@ -9,13 +9,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../interfaces/task';
 import { TasksComponent } from '../tasks/tasks.component';
-import { CompletedHighlightDirective } from '../directives/completed-highlighted/completed-highlight.directive';
+import { CompletedHighlightDirective } from '../directives/completed-highlight.directive';
+import { PriorityLabelPipePipe } from '../Pipes/priority-label-pipe.pipe';
+import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive'
+import {MatDialog, MatDialogModule} from '@angular/material/dialog'
+import { DialogService } from '../services/dialog.service';
+
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    CommonModule, MatIconModule, TasksComponent, CompletedHighlightDirective
-  ],
+    CommonModule, MatIconModule, TasksComponent, CompletedHighlightDirective, PriorityLabelPipePipe, TaskHoverHighlightDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -24,13 +28,18 @@ export class AppComponent implements OnInit {
 
   receivedTasks: Task[] = [];
 
-  displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress'];
+  displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress', 'priority'];
+
+  constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
-    
   }
 
   handleUpdatedTasks(tasks:Task[]){
     this.receivedTasks = tasks;
+  }
+
+  onTaskClick(){
+    this._dialogManager.openTaskForm();
   }
 }

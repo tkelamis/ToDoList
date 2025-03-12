@@ -1,4 +1,7 @@
 .mat-mdc-table {
 min-width: 30% !important;
 margin: 10%;
+background-color: #e5e5e5 !important;
+border-radius: 12px;
+overflow: hidden;
 }
