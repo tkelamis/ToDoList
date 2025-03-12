@@ -14,12 +14,13 @@ import { PriorityLabelPipePipe } from '../Pipes/priority-label-pipe.pipe';
 import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive'
 import {MatDialog, MatDialogModule} from '@angular/material/dialog'
 import { DialogService } from '../services/dialog.service';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    CommonModule, MatIconModule, TasksComponent, CompletedHighlightDirective, PriorityLabelPipePipe, TaskHoverHighlightDirective],
+    CommonModule, MatIconModule, TasksComponent, CompletedHighlightDirective, PriorityLabelPipePipe, TaskHoverHighlightDirective, MatNativeDateModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

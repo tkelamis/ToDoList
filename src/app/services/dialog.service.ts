@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog'
+import {MatDialog} from '@angular/material/dialog'
 import { AddTaskComponent } from '../tasks/add-task/add-task.component';
 
 @Injectable({
