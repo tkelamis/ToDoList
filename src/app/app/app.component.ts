@@ -5,22 +5,33 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Task } from '../../interfaces/task';
 import { TasksComponent } from '../tasks/tasks.component';
 import { CompletedHighlightDirective } from '../directives/completed-highlight.directive';
 import { PriorityLabelPipePipe } from '../Pipes/priority-label-pipe.pipe';
 import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive'
-import {MatDialog, MatDialogModule} from '@angular/material/dialog'
 import { DialogService } from '../services/dialog.service';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule,
-    CommonModule, MatIconModule, TasksComponent, CompletedHighlightDirective, PriorityLabelPipePipe, TaskHoverHighlightDirective, MatNativeDateModule],
+  imports: [
+    RouterOutlet, 
+    MatCardModule, 
+    MatTableModule, 
+    MatPaginatorModule, 
+    MatSortModule,
+    CommonModule, 
+    MatIconModule, 
+    TasksComponent, 
+    CompletedHighlightDirective, 
+    PriorityLabelPipePipe, 
+    TaskHoverHighlightDirective, 
+    MatNativeDateModule, 
+    MatDatepickerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

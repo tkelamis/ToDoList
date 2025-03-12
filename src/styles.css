@@ -12,12 +12,28 @@ body {
   }
 
   .app-header{
-    font-size: 24px !important;
-    font-weight: bold !important;
-    padding: 10px 20px !important;
-    background: linear-gradient(45deg, #db56f3, #1b1f3b) !important;
-    color: white !important;
-    border-radius: 12px !important;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) !important;
-    display: inline-block !important;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #db56f3, #1b1f3b);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
   }
+
+  .button-style{
+    font-size: 24px ;
+    font-weight: bold ;
+    padding: 5px 15px ;
+    background: linear-gradient(45deg, #0e154e, #5365e7) ;
+    color: white ;
+    border-radius: 12px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
+    display: inline-block ;
+  }
+
+  .cdk-overlay-pane.mat-mdc-dialog-panel {
+    max-width: none !important;
+    min-width: none !important;
+}

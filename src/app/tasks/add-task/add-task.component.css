@@ -1,1 +1,32 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+.dialog-popup{
+    display:flex; 
+    flex-direction:column; 
+    padding:50px; 
+    justify-content:center; 
+    align-items:center; 
+    background-color: lightgoldenrodyellow;
+}
+
+.disabled-btn {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #db56f3, #1b1f3b);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+  }
+
+.enabled-btn {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #01682c, #001f03);
+    color: white;
+    border-radius: 12px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+  }

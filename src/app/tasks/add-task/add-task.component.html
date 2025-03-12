@@ -1,51 +1,53 @@
-<div style="display:flex; flex-direction:column; padding:50px; justify-content:center; align-items:center; background-color: lightgoldenrodyellow;">
-    <h3>Add Task</h3>
-    <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
-      <!-- <mat-form-field appearance="fill">
-        <mat-label>Task Name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field> -->
+<div class="dialog-popup">
 
-      <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput
-               formControlName="name"
-               name="name"
-               placeholder="Name">
-        <mat-error>The name is mandatory</mat-error>
-      </mat-form-field>
+  <button 
+  type="button" 
+  class="dialog-header" 
+  [disabled]="myReactiveForm.invalid" 
+  [ngClass]="{'enabled-btn': myReactiveForm.valid, 'disabled-btn': myReactiveForm.invalid}">Add Task
+  </button>
+  <p *ngIf="myReactiveForm.valid" class="success-message">✅ Press Add to save the task</p>
 
+  <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
 
-      <mat-form-field appearance="fill">
-        <mat-label>Cost</mat-label>
-        <input matInput 
-        formControlName="cost"/>
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput
+              formControlName="name"
+              name="name"
+              placeholder="Name">
+      <mat-error>The name is mandatory</mat-error>
+    </mat-form-field>
 
-      <!-- <mat-form-field appearance="outline">
-        <input matInput [matDatepicker]="datePickerWindow">
-        <mat-datepicker-toggle matSuffix [for]="datePickerWindow"></mat-datepicker-toggle>
-        <mat-datepicker #datePickerWindow></mat-datepicker>
-      </mat-form-field> -->
+    <mat-form-field appearance="fill">
+      <mat-label>Cost</mat-label>
+      <input matInput 
+      formControlName="cost"/>
+      <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched">
+        Invalid format. Please enter a valid number.
+      </mat-error>
+    </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Date</mat-label>
-        <input matInput formControlName="date" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Priority</mat-label>
-        <input matInput formControlName="priority" />
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput 
+      [matDatepicker]="picker"
+      formControlName="date"
+      placeholder="Date">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Priority</mat-label>
-        <mat-select formControlName="priority">
-          <mat-option *ngFor="let level of priorityLevels" [value]="level">
-            {{ level }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Priority</mat-label>
+      <mat-select formControlName="priority">
+        <mat-option *ngFor="let level of priorityLevels" [value]="level">
+          {{ level }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-
-      <button style="margin-top:30px" type="button" class="btn btn-primary">Back to Home</button>
-    </form>
+    <button style="margin-top:30px" type="button" class="button-style">Back</button>
+    
+  </form>
+</div>

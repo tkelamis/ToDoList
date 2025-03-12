@@ -14,5 +14,4 @@ export class PriorityLabelPipePipe implements PipeTransform {
       default: return '🟡 Unknown';
     }
   }
-
 }

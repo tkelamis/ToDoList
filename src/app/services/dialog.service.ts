@@ -10,6 +10,6 @@ export class DialogService {
   constructor(public _matDialog: MatDialog) { }
 
   openTaskForm(){
-    this._matDialog.open(AddTaskComponent,{width:'500px',height:'575px'})
+    this._matDialog.open(AddTaskComponent,{width:'700px',height:'575px'})
   }
 }
