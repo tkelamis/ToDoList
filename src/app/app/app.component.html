@@ -1,54 +1,23 @@
-<app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
 
-<table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
+
+<mat-card class="todo-card">
+  <mat-card-header>
+    <mat-card-title class="app-header">My To-Do List</mat-card-title>
+  </mat-card-header>
   
-  <!-- Task Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Task Name </th>
-    <td mat-cell *matCellDef="let task"> {{ task.name }} </td>
-  </ng-container>
+  
+  <mat-card-content>
+    <app-task-table></app-task-table>
+  </mat-card-content>
 
-  <!-- Completed Column -->
-  <ng-container matColumnDef="completed">
-    <th mat-header-cell *matHeaderCellDef> Completed </th>
-    <td mat-cell *matCellDef="let task" [appCompletedHighlight]="task.completed">
-      <mat-icon *ngIf="task.completed"> check_circle </mat-icon>
-      <mat-icon *ngIf="!task.completed"> cancel </mat-icon>
-    </td>
-  </ng-container>
 
-  <!-- Cost Column -->
-  <ng-container matColumnDef="cost">
-    <th mat-header-cell *matHeaderCellDef> Cost </th>
-    <td mat-cell *matCellDef="let task"> {{ task.cost | currency:'EUR':'symbol-narrow'  }} </td>
-  </ng-container>
+  <mat-card-footer>
+    <app-footer></app-footer>
+  </mat-card-footer>
 
-   <!-- Date Column -->
-   <ng-container matColumnDef="date started">
-    <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let task"> {{ task.date | date }} </td>
-  </ng-container>
+</mat-card>
 
-  <!-- Progress Column -->
-  <ng-container matColumnDef="progress">
-    <th mat-header-cell *matHeaderCellDef> Progress </th>
-    <td mat-cell *matCellDef="let task"> {{ task.completionPercentage | percent  }} </td>
-  </ng-container>
 
-  <!-- Priority Column -->
-  <ng-container matColumnDef="priority">
-    <th mat-header-cell *matHeaderCellDef> Priority </th>
-    <td mat-cell *matCellDef="let task"> {{ task.priority | priorityLabelPipe }} </td>
-  </ng-container>
 
-  <!-- Table Header and Rows -->
-  <thead>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  </thead>
-  <tbody>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" appTaskHoverHighlight (click)="onTaskClick()"></tr>
-  </tbody>
 
-</table>
 
-<router-outlet />

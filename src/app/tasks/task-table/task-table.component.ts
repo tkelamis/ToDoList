@@ -1,3 +1,8 @@
+import { Task } from '../../../interfaces/task';
+import { DialogService } from '../../services/dialog.service';
+import { MatIconModule } from '@angular/material/icon';
+import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
+import { TasksComponent } from '../../tasks/tasks.component';
 import { Component, OnInit, Output } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -5,21 +10,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { Task } from '../../interfaces/task';
-import { TasksComponent } from '../tasks/tasks.component';
-import { CompletedHighlightDirective } from '../directives/completed-highlight.directive';
-import { PriorityLabelPipePipe } from '../Pipes/priority-label-pipe.pipe';
-import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive'
-import { DialogService } from '../services/dialog.service';
+import { CompletedHighlightDirective } from '../../directives/completed-highlight.directive';
+import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlight.directive'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { FooterComponent } from '../footer/footer.component';
-import { TaskTableComponent } from '../tasks/task-table/task-table.component';
+import { FooterComponent } from '../../footer/footer.component';
+
+
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-task-table',
   standalone: true,
   imports: [ 
     MatCardModule, 
@@ -34,15 +35,12 @@ import { TaskTableComponent } from '../tasks/task-table/task-table.component';
     TaskHoverHighlightDirective, 
     MatNativeDateModule, 
     MatDatepickerModule,
-    FooterComponent,
-    TaskTableComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    FooterComponent],
+  templateUrl: './task-table.component.html',
+  styleUrl: './task-table.component.css'
 })
-export class AppComponent implements OnInit {
-  title = 'ToDoList';
-
-  receivedTasks: Task[] = [];
+export class TaskTableComponent {
+receivedTasks: Task[] = [];
 
   displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress', 'priority'];
 
