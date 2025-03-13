@@ -10,15 +10,14 @@
 }
 
 .dialog-title{
-    font-size: 0.8rem;
-    font-weight: bold;
-    padding: 0.6rem;
-    background: linear-gradient(45deg, #ff0021, #f921ba, #8600ff);
-    color: white;
-    border-radius: 12px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    width: fit-content;
-    margin-top: 0.5rem;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0.5rem 2rem !important;
+  background: linear-gradient(45deg, #ff0021,  #f921ba , #8600ff);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  display: inline-block;
 }
 
   .mat-mdc-form-field-error{
