@@ -1,5 +1,4 @@
-.foot{
-    display: flex;
-    width: 100%;
-    justify-content: center;
+.anchor{
+    text-decoration:none;
+    color: #c9c9c9;
 }

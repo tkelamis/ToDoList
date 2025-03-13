@@ -1,19 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { Task } from '../../interfaces/task';
-import { TasksComponent } from '../tasks/tasks.component';
-import { CompletedHighlightDirective } from '../directives/completed-highlight.directive';
-import { PriorityLabelPipePipe } from '../Pipes/priority-label-pipe.pipe';
-import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive'
-import { DialogService } from '../services/dialog.service';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FooterComponent } from '../footer/footer.component';
 import { TaskTableComponent } from '../tasks/task-table/task-table.component';
 
@@ -22,40 +9,13 @@ import { TaskTableComponent } from '../tasks/task-table/task-table.component';
   selector: 'app-root',
   standalone: true,
   imports: [ 
-    MatCardModule, 
-    MatTableModule, 
-    MatPaginatorModule, 
-    MatSortModule,
+    MatCardModule,
     CommonModule, 
-    MatIconModule, 
-    TasksComponent, 
-    CompletedHighlightDirective, 
-    PriorityLabelPipePipe, 
-    TaskHoverHighlightDirective, 
-    MatNativeDateModule, 
-    MatDatepickerModule,
     FooterComponent,
     TaskTableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent{
   title = 'ToDoList';
-
-  receivedTasks: Task[] = [];
-
-  displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress', 'priority'];
-
-  constructor(private _dialogManager:DialogService){}
-
-  ngOnInit(): void {
-  }
-
-  handleUpdatedTasks(tasks:Task[]){
-    this.receivedTasks = tasks;
-  }
-
-  onTaskClick(){
-    this._dialogManager.openTaskForm();
-  }
 }

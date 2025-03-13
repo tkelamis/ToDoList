@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TaskPriority } from '../../interfaces/task';
+import { TaskPriority } from '../interfaces/task';
 
 @Pipe({
   name: 'priorityLabelPipe'

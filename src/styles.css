@@ -1,35 +1,11 @@
 body {
     background:url('../public/images/main-background.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: 100vh;
-  }
-
-  .mat-mdc-card{
-    background-color:transparent !important;
-    border-color: transparent !important;
-    box-shadow: none !important;
-}
-
-.mat-mdc-card-content{
-  padding: 1rem 0.5rem !important;
-}
-
-.mat-mdc-table {
-  min-width: 30% !important;
-  margin: 10%;
-  padding: 1rem;
-  background-color: #e5e5e5 !important;
-  border-style: solid !important;
-  border-radius: 12px !important;
-  border-width: 0 !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-  overflow:visible !important;
-  
-  }
-  
-  .todo-card {
-    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
   }
 
   .app-header{
@@ -41,6 +17,51 @@ body {
     border-radius: 12px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     display: inline-block;
+  }
+
+  app-root {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  app-footer {
+    margin-top: auto;
+    padding: 1rem 0;
+    display: flex;
+    border-top: 1px solid;
+    border-top-color: #816c6c;
+    justify-content: center;
+  }
+
+  .mat-mdc-card{
+    background-color:transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .mat-mdc-card-content{
+    padding: 1rem 0.5rem !important;
+  }
+
+  .mat-mdc-table {
+    min-width: 30% !important;
+    margin: 10%;
+    padding: 1rem;
+    background-color: #e5e5e5 !important;
+    border-style: solid !important;
+    border-radius: 12px !important;
+    border-width: 0 !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    overflow:visible !important;
+    
+  }
+  
+  .todo-card {
+    width: 100%;
   }
 
   .button-style{

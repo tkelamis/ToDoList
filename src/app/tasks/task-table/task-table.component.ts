@@ -1,10 +1,9 @@
-import { Task } from '../../../interfaces/task';
+import { Task } from '../../interfaces/task';
 import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
-import { TasksComponent } from '../../tasks/tasks.component';
-import { Component, OnInit, Output } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TasksComponent } from '../tasks/tasks.component';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -14,7 +13,6 @@ import { CompletedHighlightDirective } from '../../directives/completed-highligh
 import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlight.directive'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { FooterComponent } from '../../footer/footer.component';
 
 
 
@@ -34,8 +32,7 @@ import { FooterComponent } from '../../footer/footer.component';
     PriorityLabelPipePipe, 
     TaskHoverHighlightDirective, 
     MatNativeDateModule, 
-    MatDatepickerModule,
-    FooterComponent],
+    MatDatepickerModule],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
 })
