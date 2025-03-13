@@ -11,21 +11,20 @@
   <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
 
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
+      <mat-label>Task Name</mat-label>
       <input matInput
               formControlName="name"
               name="name"
               placeholder="Name">
-      <mat-error>The name is mandatory</mat-error>
+      <mat-error class="error-message">The task name is mandatory</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Cost</mat-label>
       <input matInput 
       formControlName="cost"/>
-      <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched">
-        Invalid format. Please enter a valid number.
-      </mat-error>
+      <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('required') && myReactiveForm.get('cost')?.touched">The cost is mandatory</mat-error>
+      <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched"> Invalid format. Please enter a valid number.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -47,7 +46,7 @@
       </mat-select>
     </mat-form-field>
 
-    <button style="margin-top:30px" type="button" class="button-style">Back</button>
+    <button style="margin-top:30px" type="button" class="button-style" (click)=closeDialog()>Back</button>
     
   </form>
 </div>

@@ -15,7 +15,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     padding: 10px 20px;
-    background: linear-gradient(45deg, #db56f3, #1b1f3b);
+    background: linear-gradient(45deg, #ff0021,  #f921ba , #8600ff);
     color: white;
     border-radius: 12px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
@@ -26,7 +26,7 @@ body {
     font-size: 24px ;
     font-weight: bold ;
     padding: 5px 15px ;
-    background: linear-gradient(45deg, #0e154e, #5365e7) ;
+    background: linear-gradient(45deg, #4e350e, #5358e7) ;
     color: white ;
     border-radius: 12px ;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
@@ -36,4 +36,4 @@ body {
   .cdk-overlay-pane.mat-mdc-dialog-panel {
     max-width: none !important;
     min-width: none !important;
-}
+  }
