@@ -1,12 +1,6 @@
 <div class="dialog-popup">
 
-  <button 
-  type="button" 
-  class="dialog-header" 
-  [disabled]="myReactiveForm.invalid" 
-  [ngClass]="{'enabled-btn': myReactiveForm.valid, 'disabled-btn': myReactiveForm.invalid}">Add Task
-  </button>
-  <p *ngIf="myReactiveForm.valid" class="success-message">✅ Press Add to save the task</p>
+  <div class="app-header">Add Task</div>
 
   <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
 
@@ -46,7 +40,15 @@
       </mat-select>
     </mat-form-field>
 
-    <button style="margin-top:30px" type="button" class="button-style" (click)=closeDialog()>Back</button>
+    <div class="dialog-buttons">
+      <button 
+      type="button" 
+      [ngClass]="{'valid-button': myReactiveForm.valid, 'invalid-button': myReactiveForm.invalid}"
+      [disabled]="myReactiveForm.invalid">Save
+      </button>
+      <button type="button" class="button-style" (click)=closeDialog()>Back</button>
+    </div>
+    
     
   </form>
 </div>

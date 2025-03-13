@@ -16,7 +16,7 @@ import { MatDialogRef } from '@angular/material/dialog';
     MatInputModule, 
     MatDatepickerModule, 
     MatNativeDateModule, 
-    MatSelectModule, 
+    MatSelectModule,
     NgFor, NgIf, NgClass],
   standalone:true,
   templateUrl: './add-task.component.html',

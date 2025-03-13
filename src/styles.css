@@ -57,7 +57,14 @@ body {
     border-color: transparent !important;
     box-shadow: none !important;
     overflow:visible !important;
-    
+  }
+
+  .mat-mdc-dialog-surface{
+    background-color: #3d3d3d !important;
+  }
+
+  .mat-mdc-cell{
+    padding-left: 2.3rem !important;
   }
   
   .todo-card {

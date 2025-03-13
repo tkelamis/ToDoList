@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
-import { TaskTableComponent } from '../tasks/task-table/task-table.component';
-
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,8 @@ import { TaskTableComponent } from '../tasks/task-table/task-table.component';
     MatCardModule,
     CommonModule, 
     FooterComponent,
-    TaskTableComponent],
+    RouterOutlet
+    ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
