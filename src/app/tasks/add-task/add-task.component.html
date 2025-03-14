@@ -42,11 +42,14 @@
 
     <div class="dialog-buttons">
       <button 
-      type="button" 
-      [ngClass]="{'valid-button': myReactiveForm.valid, 'invalid-button': myReactiveForm.invalid}"
+      type="button"
+      [ngClass]="{
+        'dialog-valid-save-button add-shadow': myReactiveForm.valid,
+        'dialog-invalid-save-button add-shadow': myReactiveForm.invalid
+        }"
       [disabled]="myReactiveForm.invalid">Save
       </button>
-      <button type="button" class="button-style" (click)=closeDialog()>Back</button>
+      <button type="button" class="dialog-back-button add-shadow" (click)=closeDialog()>Back</button>
     </div>
     
     

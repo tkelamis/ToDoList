@@ -8,5 +8,7 @@ export const routes: Routes = [
     //EagerLoading
     {path: 'about', component: AboutComponent}
     // LazyLoading
-    //{path: 'about', loadComponent:() => import("../app/footer/about/about.component").then(c => c.AboutComponent)}
+    //{path: 'about', 
+    // loadComponent:() => import("../app/footer/about/about.component")
+    //                      .then(c => c.AboutComponent)}
 ];

@@ -63,26 +63,23 @@ body {
     background-color: #3d3d3d !important;
   }
 
-  .mat-mdc-cell{
+  /* .mat-mdc-cell{
     padding-left: 2.3rem !important;
+  } */
+
+  .mat-mdc-table tbody{
+    background-color: white !important;
   }
   
   .todo-card {
     width: 100%;
   }
 
-  .button-style{
-    font-size: 24px ;
-    font-weight: bold ;
-    padding: 5px 15px ;
-    background: linear-gradient(45deg, #4e350e, #5358e7) ;
-    color: white ;
-    border-radius: 12px ;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
-    display: inline-block ;
-  }
-
   .cdk-overlay-pane.mat-mdc-dialog-panel {
     max-width: none !important;
     min-width: none !important;
+  }
+  
+  .add-shadow:hover {
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4) !important; /* Stronger shadow on hover */
   }

@@ -37,9 +37,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   styleUrl: './task-table.component.css'
 })
 export class TaskTableComponent {
-receivedTasks: Task[] = [];
 
-  displayedColumns : string[] = ['name' , 'completed', 'cost', 'date started', 'progress', 'priority'];
+  receivedTasks: Task[] = [];
+  displayedColumns : string[] = ['name', 'completed', 'cost', 'date started', 'progress', 'priority'];
 
   constructor(private _dialogManager:DialogService){}
 

@@ -29,7 +29,7 @@
     justify-content: space-around;
   }
 
-  .save-button{
+  .dialog-save-button{
     font-size: 24px ;
   font-weight: bold ;
   padding: 5px 15px ;
@@ -40,7 +40,7 @@
   display: inline-block ;
   }
 
-  .valid-button {
+  .dialog-valid-save-button {
     font-size: 24px ;
     font-weight: bold ;
     padding: 5px 15px ;
@@ -50,14 +50,36 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
     display: inline-block ;
   }
+
+  .dialog-valid-save-button:hover{
+    background: linear-gradient(45deg, #2c5726, #023306) ;
+  }
   
-  .invalid-button {
+  .dialog-invalid-save-button {
     font-size: 24px ;
     font-weight: bold ;
     padding: 5px 15px ;
-    background: linear-gradient(45deg, #9cee92, #a4bda6) ;
+    background: linear-gradient(45deg, #285e20, #97f15a) ;
     color: white ;
     border-radius: 12px ;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
     display: inline-block ;
+  }
+
+  .dialog-invalid-save-button:hover{
+    cursor: not-allowed;
+  }
+
+  .dialog-back-button{
+    font-size: 24px ;
+    font-weight: bold ;
+    padding: 5px 15px ;
+    background: linear-gradient(45deg, #661466, #5358e7) ;
+    color: white ;
+    border-radius: 12px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
+  }
+
+  .dialog-back-button:hover {
+    background: linear-gradient(45deg, #3d0d3d, #292fe9) ;
   }
