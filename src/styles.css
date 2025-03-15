@@ -79,6 +79,16 @@ body {
     max-width: none !important;
     min-width: none !important;
   }
+
+  .dialog-generic{
+    font-size: 24px ;
+    font-weight: bold ;
+    color: white ;
+    border-radius: 12px ;
+    padding: 5px 15px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
+    display: inline-block ;
+  }
   
   .add-shadow:hover {
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.4) !important; /* Stronger shadow on hover */

@@ -1,0 +1,65 @@
+<div class="dialog-popup">
+    <div class="dialog-generic dialog-title">Edit Task</div>
+    <form [formGroup]="myReactiveForm" class="dialog-form">
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Task Name</mat-label>
+        <input matInput
+                formControlName="name">
+        <mat-error class="error-message">The task name is mandatory</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Completed</mat-label>
+        <mat-select formControlName="completed">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        <mat-error class="error-message">The task name is mandatory</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Cost</mat-label>
+        <input matInput 
+        formControlName="cost"/>
+        <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('required') && myReactiveForm.get('cost')?.touched">The cost is mandatory</mat-error>
+        <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched"> Invalid format. Please enter a valid number.</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput 
+        [matDatepicker]="picker"
+        formControlName="date"
+        placeholder="Date">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Progress</mat-label>
+        <input matInput
+                formControlName="progress">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option *ngFor="let level of priorityLevels" [value]="level">
+            {{ level }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+        <button 
+        type="button"
+        [ngClass]="{
+          'dialog-generic dialog-valid-save-button': myReactiveForm.valid,
+          'dialog-generic dialog-invalid-save-button': myReactiveForm.invalid
+          }"
+        [disabled]="myReactiveForm.invalid">Save
+        </button>
+
+        <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
+    </form>
+</div>

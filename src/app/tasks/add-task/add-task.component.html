@@ -1,6 +1,6 @@
 <div class="dialog-popup">
 
-  <div class="dialog-title">Add Task</div>
+  <div class="dialog-generic dialog-title">Add Task</div>
 
   <form [formGroup]="myReactiveForm" style="display:flex; flex-direction:column; padding-top:50px; justify-content:center; margin:0 auto">
 
@@ -44,12 +44,12 @@
       <button 
       type="button"
       [ngClass]="{
-        'dialog-valid-save-button add-shadow': myReactiveForm.valid,
-        'dialog-invalid-save-button add-shadow': myReactiveForm.invalid
+        'dialog-generic dialog-valid-save-button': myReactiveForm.valid,
+        'dialog-generic dialog-invalid-save-button': myReactiveForm.invalid
         }"
       [disabled]="myReactiveForm.invalid">Save
       </button>
-      <button type="button" class="dialog-back-button add-shadow" (click)=closeDialog()>Back</button>
+      <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
     </div>
     
     

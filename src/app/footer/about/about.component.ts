@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ClickDisabledDirective } from '../../click-disabled.directive';
 
 @Component({
   selector: 'app-about',
-  imports: [RouterLink, ClickDisabledDirective],
+  imports: [RouterLink],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })

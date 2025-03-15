@@ -7,16 +7,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TaskPriority } from '../../interfaces/task';
 
 @Component({
   selector: 'app-add-task',
   imports: [
     ReactiveFormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatDatepickerModule, 
-    MatNativeDateModule, 
-    MatSelectModule,
+    MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule,
     NgFor, NgIf, NgClass],
   standalone:true,
   templateUrl: './add-task.component.html',
@@ -24,8 +21,8 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class AddTaskComponent implements OnInit {
 
-  myReactiveForm!: FormGroup
-  priorityLevels = ['Unknown', 'Low', 'Medium', 'High'];
+  myReactiveForm!: FormGroup;
+  priorityLevels:string[] = Object.keys(TaskPriority);
 
   constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<AddTaskComponent>){}
 
@@ -37,6 +34,8 @@ export class AddTaskComponent implements OnInit {
       priority:['', [Validators.required]]
     });
   }
+
+
 
   closeDialog() {
     this.dialogRef.close();

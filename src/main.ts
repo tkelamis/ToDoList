@@ -9,6 +9,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 bootstrapApplication(AppComponent, {
   providers:[
     provideRouter(routes),
-    {provide: DateAdapter, useClass: NativeDateAdapter}, {provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS}],
+    {provide: DateAdapter, useClass: NativeDateAdapter}, {provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS}]
 })
   .catch((err) => console.error(err));

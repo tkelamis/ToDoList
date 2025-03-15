@@ -14,14 +14,19 @@
   background: linear-gradient(45deg, #ff0021,  #f921ba , #8600ff);
 }
 
+.dialog-form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-top:50px;
+    margin:0 auto;
+}
+
   .mat-mdc-form-field-error{
     color: #ffacac !important;
   }
 
-  .dialog-buttons{
-    display: flex;
-    justify-content: space-around;
-  }
+  
 
   .dialog-save-button{
   background: linear-gradient(45deg, #2c5726, #29a833) ;
