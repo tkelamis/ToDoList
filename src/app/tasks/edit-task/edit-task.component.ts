@@ -31,16 +31,11 @@ export class EditTaskComponent {
     this.myReactiveForm = this._formBuilder.group({
       name:[this.receivedTask?.name, [Validators.required]],
       completed:[this.receivedTask?.completed,[Validators.required]],
-      cost: [this.receivedTask?.cost, [Validators.required, Validators.pattern('^[0-9]*$')]],
+      cost: [this.receivedTask?.cost, [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]],
       date: [this.receivedTask?.date, [Validators.required]],
-      progress:[this.receivedTask?.completionPercentage],
+      progress:[this.receivedTask?.completionPercentage,  [Validators.pattern('^[0-9]{1,2}$')]],
       priority:[this.receivedTask?.priority, [Validators.required]]
     });
-  }
-
-  ngAfterViewInit(): void {
-    // Update value and validity after the view has initialized
-    this.myReactiveForm.updateValueAndValidity();
   }
 
   closeDialog() {

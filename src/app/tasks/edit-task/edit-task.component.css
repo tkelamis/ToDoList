@@ -32,17 +32,11 @@
   background: linear-gradient(45deg, #2c5726, #29a833) ;
   }
 
-  .dialog-valid-save-button {
-    background: linear-gradient(45deg, #2c5726, #29a833) ;
-  }
-
   .dialog-valid-save-button:hover{
     background: linear-gradient(45deg, #2c5726, #023306) ;
   }
   
-  .dialog-invalid-save-button {
-    background: linear-gradient(45deg, #285e20, #97f15a) ;
-  }
+  
 
   .dialog-invalid-save-button:hover{
     cursor: not-allowed;
@@ -54,4 +48,28 @@
 
   .dialog-back-button:hover {
     background: linear-gradient(45deg, #3d0d3d, #292fe9) ;
+  }
+
+  
+
+  .dialog-valid-save-button {
+    font-size: 24px ;
+    font-weight: bold ;
+    color: white ;
+    border-radius: 12px ;
+    padding: 5px 15px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
+    display: inline-block ;
+    background: linear-gradient(45deg, #2c5726, #29a833) ;
+  }
+
+  .dialog-invalid-save-button {
+    font-size: 24px ;
+    font-weight: bold ;
+    color: white ;
+    border-radius: 12px ;
+    padding: 5px 15px ;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2) ;
+    display: inline-block ;
+    background: linear-gradient(45deg, #285e20, #97f15a) ;
   }

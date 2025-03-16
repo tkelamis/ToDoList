@@ -22,6 +22,7 @@
         <mat-label>Cost</mat-label>
         <input matInput 
         formControlName="cost"/>
+        <span style="padding-right: 1rem;" matSuffix>€</span>
         <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('required') && myReactiveForm.get('cost')?.touched">The cost is mandatory</mat-error>
         <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched"> Invalid format. Please enter a valid number.</mat-error>
       </mat-form-field>
@@ -40,6 +41,8 @@
         <mat-label>Progress</mat-label>
         <input matInput
                 formControlName="progress">
+        <span style="padding-right: 1rem;" matSuffix>%</span>
+        <mat-error *ngIf="myReactiveForm.get('progress')?.hasError('pattern') && myReactiveForm.get('progress')?.touched"> Invalid format. Please enter up to 2 digits.</mat-error>
       </mat-form-field>
   
       <mat-form-field appearance="fill">
@@ -54,8 +57,8 @@
         <button 
         type="button"
         [ngClass]="{
-          'dialog-generic dialog-valid-save-button': myReactiveForm.valid,
-          'dialog-generic dialog-invalid-save-button': myReactiveForm.invalid
+          'dialog-valid-save-button': myReactiveForm.valid,
+          'dialog-invalid-save-button': myReactiveForm.invalid
           }"
         [disabled]="myReactiveForm.invalid">Save
         </button>
