@@ -1,1 +1,28 @@
 
+<div class="tasks-overview-container font-and-size">
+
+    <div *ngIf="_tasksList.length === 0" >
+        <p>You have no tasks</p>
+    </div>
+    
+    <div *ngIf="_tasksList.length > 0" > 
+        <ul>
+            <li *ngIf="_tasksList.length >= 2">Your highest priorities at the moment are tasks "{{_tasksList[0].name}}" and "{{_tasksList[1].name}}"</li>
+            <li *ngIf="_tasksList.length === 1">Your highest priority is task "{{_tasksList[0].name}}"</li>
+            <li>You have {{_tasksList.length}} not completed tasks in total</li>
+            <li *ngIf="numberOfCompletedTasks ===1">You have completed {{numberOfCompletedTasks}} task</li>
+            <li *ngIf="numberOfCompletedTasks > 1">You have completed {{numberOfCompletedTasks}} tasks</li>
+            <li *ngIf="!numberOfCompletedTasks">You have not completed any task</li>
+            <li *ngIf="numberOfInProgressTasks === 0"> You dont have any tasks in progress</li>
+            <li *ngIf="numberOfInProgressTasks === 1">You have 1 task in progress</li>
+            <li *ngIf="numberOfInProgressTasks > 1">You have {{numberOfInProgressTasks}} tasks in progress</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+
+

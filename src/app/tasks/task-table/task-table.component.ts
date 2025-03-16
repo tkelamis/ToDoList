@@ -13,7 +13,7 @@ import { CompletedHighlightDirective } from '../../directives/completed-highligh
 import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlight.directive'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { RouterLink } from '@angular/router';
+import { TaskOverviewComponent } from "../task-overview/task-overview.component";
 
 
 @Component({
@@ -25,7 +25,7 @@ import { RouterLink } from '@angular/router';
     TasksComponent,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    RouterLink
+    TaskOverviewComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
@@ -34,10 +34,13 @@ export class TaskTableComponent {
   receivedTasks: Task[] = [];
   displayedColumns : string[] = [];
   selectedTask?: Task;
+  taskOverviewVisibleflag: boolean = false;
+  inputExampleNumber?: number;
 
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
+    console.log(this.taskOverviewVisibleflag);
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -58,4 +61,14 @@ export class TaskTableComponent {
   setDisplayedColumnsTitles(){
       this.displayedColumns = Object.keys(this.receivedTasks[0])
   }
+
+  taskOverviewVisible(){
+    if (this.taskOverviewVisibleflag === false)
+      this.taskOverviewVisibleflag = true;
+    else if (this.taskOverviewVisibleflag === true)
+      this.taskOverviewVisibleflag = false;
+
+    console.log(this.taskOverviewVisibleflag);
+    }
+    
 }

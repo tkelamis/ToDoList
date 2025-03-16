@@ -18,7 +18,6 @@ export class DialogService {
     if (value == "openEditWindow"){
       const { EditTaskComponent } = await import('../tasks/edit-task/edit-task.component')
       this._matDialog.open(EditTaskComponent,{width:'1000px',height:'575px', data:{task}})
-      console.log(task)
     }
   }
 }

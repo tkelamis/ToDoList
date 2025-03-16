@@ -3,4 +3,6 @@
     color: #918f8f;
     padding: 5px 15px ;
     margin-left: 10%;
+    text-decoration: underline;
+    cursor: pointer;
   }

@@ -14,15 +14,11 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [
-    { name: 'tsimaras', completed: true, cost: 0, date: new Date('2025-03-11'), completionPercentage: 50, priority: TaskPriority.High },
-    { name: 'kelamis', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Unknown }
+    { name: 'gogo', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
+    { name: 'kelamis', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Unknown },
+    { name: 'tsimaras', completed: false, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0, priority: TaskPriority.High }
   ]
-
-  // Input properties examples
-  // @Input({
-  //   required: true, 
-  //   transform: (value: string) => value.toUpperCase()
-  // }) childValue = '';
+  
 
   @Output() tasksUpdated = new EventEmitter<Task[]>();
 
@@ -37,37 +33,4 @@ export class TasksComponent implements OnInit {
   }
 
 }
-// {
-//   tasks: Task[] = [
-//     { name: 'tsimaras', completed: true, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0.50, priority: TaskPriority.High },
-//     { name: 'kelamis', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 0.20, priority: TaskPriority.Unknown }
-//   ]
 
-//   // private _practiceChild:string = '';
-
-//   // @Input() 
-//   // set practiceChild(value:string){
-//   //   this._practiceChild = this.toUpperCase(value);
-//   // }
-//   // get practiceChild():string{
-//   //   return this._practiceChild;
-//   // }
-
-
-
-//   // @Output() tasksUpdated = new EventEmitter<Task[]>();
-
-//   ngOnInit(): void {
-    
-//     this.sendTasks();
-//     // console.log(this.practiceChild);
-//   }
-
-//   sendTasks() {
-//     this.tasksUpdated.emit(this.tasks);
-//   }
-
-//   // private toUpperCase(value: string | undefined): string {
-//   //   return value?.toUpperCase() ?? '';
-//   // }
-// }

@@ -49,6 +49,14 @@
     </tbody>
   </table>
 
-  <a [routerLink]="['/overview']" class="overview-anchor"> Task overview</a>
+  <a class="overview-anchor" (click)="taskOverviewVisible()"> Task overview</a>
+
+  <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
+    <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
+  </div>
+
+
+  
+
 
   

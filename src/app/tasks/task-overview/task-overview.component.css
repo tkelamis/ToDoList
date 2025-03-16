@@ -1,0 +1,17 @@
+.tasks-overview-container{
+    width: fit-content;
+    margin: 1% 0% 0% 10%;
+    padding: 1rem;
+    background-color: #e5e5e5 ;
+    border-style: solid;
+    border-radius: 12px;
+    border-width: 0;
+    border-color: transparent;
+}
+
+.font-and-size{
+    text-decoration: dashed;
+    font-size: 14px; 
+    font-family: Roboto, sans-serif;
+}
+
