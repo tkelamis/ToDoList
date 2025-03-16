@@ -1,4 +1,4 @@
-import { Task, TaskPriority } from './../../interfaces/task';
+import { Task } from './../../interfaces/task';
 import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
@@ -8,13 +8,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { CompletedHighlightDirective } from '../../directives/completed-highlight.directive';
 import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlight.directive'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { EditTaskComponent } from "../edit-task/edit-task.component";
-import { EventEmitter } from 'stream';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-task-table',
@@ -25,7 +25,7 @@ import { EventEmitter } from 'stream';
     TasksComponent,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    EditTaskComponent
+    RouterLink
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'

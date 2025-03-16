@@ -1,6 +1,5 @@
 <app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
   <table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
-    
     <!-- Task Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Task Name </th>
@@ -48,7 +47,8 @@
     <tbody>
       <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" appTaskHoverHighlight (click)="onTaskClick('openEditWindow',i)"></tr>
     </tbody>
-
   </table>
+
+  <a [routerLink]="['/overview']" class="overview-anchor"> Task overview</a>
 
   

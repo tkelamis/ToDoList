@@ -6,9 +6,11 @@ export const routes: Routes = [
     {path: '', component: TaskTableComponent},
 
     //EagerLoading
-    {path: 'about', component: AboutComponent}
-    // LazyLoading
-    //{path: 'about', 
-    // loadComponent:() => import("../app/footer/about/about.component")
-    //                      .then(c => c.AboutComponent)}
+    //{path: 'about', component: AboutComponent}
+    //LazyLoading
+    {path: 'about',
+        loadComponent:() => import("../app/footer/about/about.component").then(c => c.AboutComponent)},
+
+    {path:'overview',
+        loadComponent:() => import("../app/tasks/task-overview/task-overview.component").then(c => c.TaskOverviewComponent)}
 ];
