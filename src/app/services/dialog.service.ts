@@ -14,10 +14,14 @@ export class DialogService {
 
 
   // lazy loading
-  async openTaskForm(value: string, task: Task){
+  async openTaskForm(value: string, task?: Task){
     if (value == "openEditWindow"){
       const { EditTaskComponent } = await import('../tasks/edit-task/edit-task.component')
       this._matDialog.open(EditTaskComponent,{width:'1000px',height:'575px', data:{task}})
+    }
+    if (value == "openAddWindow"){
+      const { AddTaskComponent } = await import('../tasks/add-task/add-task.component')
+      this._matDialog.open(AddTaskComponent,{width:'600px',height:'575px'})
     }
   }
 }

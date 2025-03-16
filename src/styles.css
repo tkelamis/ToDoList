@@ -48,7 +48,7 @@ body {
 
   .mat-mdc-table {
     min-width: 30% !important;
-    margin: 10% 10% 1% 10%;
+    margin: 10% 10% 0.3% 10%;
     padding: 1rem;
     background-color: #e5e5e5 !important;
     border-style: solid !important;
@@ -57,6 +57,7 @@ body {
     border-color: transparent !important;
     box-shadow: none !important;
     overflow:visible !important;
+    border-spacing:revert !important;
   }
 
   .mat-mdc-dialog-surface{
@@ -66,6 +67,12 @@ body {
   .mat-mdc-table tbody{
     background-color: white !important;
   }
+
+  tfoot {
+    display: table-footer-group !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
   
   .todo-card {
     width: 100%;

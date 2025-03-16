@@ -40,7 +40,6 @@ export class TaskTableComponent {
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
-    console.log(this.taskOverviewVisibleflag);
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -58,6 +57,10 @@ export class TaskTableComponent {
     this._dialogManager.openTaskForm(value, this.selectedTask);
   }
 
+  onAddTaskClick(value:string):void{
+    this._dialogManager.openTaskForm(value);
+  }
+
   setDisplayedColumnsTitles(){
       this.displayedColumns = Object.keys(this.receivedTasks[0])
   }
@@ -70,5 +73,4 @@ export class TaskTableComponent {
 
     console.log(this.taskOverviewVisibleflag);
     }
-    
 }

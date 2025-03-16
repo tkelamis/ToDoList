@@ -6,3 +6,33 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  .add-new-row {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f5f5f5; /* Light grey background */
+}
+
+.add-entry-anchor {
+    color: #1976d2; /* Blue color (Material Design Primary) */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-entry-anchor:hover {
+    text-decoration: underline;
+}
+
+
+.task-table-add-task{
+    text-align: center;
+    background-color: #f5f5f5;
+    width: 20rem;
+    margin-left: 10%;
+    border-radius: 12px;
+    padding: 0.4rem;
+    font-size: 14px; 
+    font-family: Roboto, sans-serif;
+    margin-bottom: 1%;
+}

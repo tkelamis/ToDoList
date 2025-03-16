@@ -39,6 +39,11 @@
       <td mat-cell *matCellDef="let task"> {{ task.priority | priorityLabelPipe }} </td>
     </ng-container>
 
+    <ng-container matColumnDef="footerer">
+      <td mat-footer-cell *matFooterCellDef colspan="3">dfbdfbdfgbfgbfgbgfb
+    </td>
+    </ng-container>
+
 
     <!-- Table Header and Rows -->
     <thead>
@@ -48,15 +53,13 @@
       <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;" appTaskHoverHighlight (click)="onTaskClick('openEditWindow',i)"></tr>
     </tbody>
   </table>
-
+  
+  <div class="task-table-add-task">
+    <a class="add-entry-anchor" (click)="onAddTaskClick('openAddWindow')">+ Add New Task</a>
+  </div>
+  
   <a class="overview-anchor" (click)="taskOverviewVisible()"> Task overview</a>
 
   <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
     <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
   </div>
-
-
-  
-
-
-  
