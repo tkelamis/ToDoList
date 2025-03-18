@@ -6,6 +6,8 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
 export class TaskHoverHighlightDirective {
 
 @HostBinding('style.backgroundColor') backgroundColor?:string; 
+@HostBinding('style.transition') transition = 'background-color 0.1s ease-in-out';
+@HostBinding('style.cursor') cursor = 'pointer';
 
   constructor() { }
 

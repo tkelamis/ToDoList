@@ -14,6 +14,7 @@ import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlig
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TaskOverviewComponent } from "../task-overview/task-overview.component";
+import { FiltersComponent } from "../../filters/filters.component";
 
 
 @Component({
@@ -25,7 +26,8 @@ import { TaskOverviewComponent } from "../task-overview/task-overview.component"
     TasksComponent,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    TaskOverviewComponent
+    TaskOverviewComponent,
+    FiltersComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
@@ -35,7 +37,7 @@ export class TaskTableComponent {
   displayedColumns : string[] = [];
   selectedTask?: Task;
   taskOverviewVisibleflag: boolean = false;
-  inputExampleNumber?: number;
+  optionsVisible: boolean = false;
 
   constructor(private _dialogManager:DialogService){}
 
@@ -70,7 +72,12 @@ export class TaskTableComponent {
       this.taskOverviewVisibleflag = true;
     else if (this.taskOverviewVisibleflag === true)
       this.taskOverviewVisibleflag = false;
+  }
 
-    console.log(this.taskOverviewVisibleflag);
+    showOptions():void{
+      if (this.optionsVisible === false)
+        this.optionsVisible = true;
+      else if (this.optionsVisible === true)
+        this.optionsVisible = false;
     }
 }

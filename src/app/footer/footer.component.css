@@ -1,4 +1,23 @@
-.footer-about-anchor{
-    text-decoration:none;
-    color: #c9c9c9;
+.footer-about-anchor {
+    color: #918f8f;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-about-anchor::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: #7e7f80;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.footer-about-anchor:hover::after {
+    transform: scaleX(1);
 }

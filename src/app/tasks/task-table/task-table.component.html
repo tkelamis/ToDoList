@@ -1,4 +1,20 @@
 <app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
+
+<div class="task-table-filter-container">
+  <div class="task-table-filter-button-container" appTaskHoverHighlight>
+    <a class="task-table-filter-button"  (click)="showOptions()">Filter By</a>
+  </div>
+  <div *ngIf="optionsVisible" class="task-table-filter-options-container">
+    <div class="task-table-filter-options-input" appTaskHoverHighlight>By Name</div>
+    <div class="task-table-filter-options-input" appTaskHoverHighlight>By Status</div>
+    <div class="task-table-filter-options-input" appTaskHoverHighlight>By Cost</div>
+    <div class="task-table-filter-options-input" appTaskHoverHighlight>By Date Inserted</div>
+    <div class="task-table-filter-options-input" appTaskHoverHighlight>By Priority</div>
+  </div>
+</div>
+
+
+
   <table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
     <!-- Task Name Column -->
     <ng-container matColumnDef="name">
@@ -63,3 +79,7 @@
   <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
     <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
   </div>
+
+  <app-filters *ngIf="this.receivedTasks">
+    [filterList]="receivedTasks"
+  </app-filters>
