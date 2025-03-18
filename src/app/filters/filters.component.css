@@ -1,0 +1,18 @@
+.filters-options-container{
+    display:flex;
+    margin-bottom: 3%;
+    flex-wrap: wrap;
+    width: fit-content;
+    background-color: #e5e5e5 ;
+    border-radius: 12px;
+    padding: 0.5rem;
+}
+
+.filters-options-input{
+    padding: 0 1rem 0 1rem;
+    background-color: white;
+    border: solid 1px rgb(209, 208, 208);
+    border-radius: 12px;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}

@@ -14,12 +14,9 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [
-    { name: 'gogo', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
-    { name: 'kelamis', completed: false, cost:553.458, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Unknown },
-    { name: 'tsimaras', completed: false, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0, priority: TaskPriority.High },
-    { name: 'tsimaras', completed: false, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0, priority: TaskPriority.High },
-    { name: 'tsimaras', completed: false, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0, priority: TaskPriority.High },
-    { name: 'tsimaras', completed: false, cost: 0, date: new Date('2025-03-11'), completionPercentage: 0, priority: TaskPriority.High },
+    { name: 'gogo', completed: false, cost:10.458, date: new Date('2026-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
+    { name: 'gogo', completed: false, cost:553.458, date: new Date('2023-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
+    { name: 'kelamis', completed: true, cost:5, date: new Date('2025-02-11'), completionPercentage: 20, priority: TaskPriority.Unknown }
   ]
   
 

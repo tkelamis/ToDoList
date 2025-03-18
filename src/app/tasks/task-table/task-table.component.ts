@@ -3,7 +3,7 @@ import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
 import { TasksComponent } from '../tasks/tasks.component';
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -14,20 +14,24 @@ import { TaskHoverHighlightDirective } from '../../directives/task-hover-highlig
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TaskOverviewComponent } from "../task-overview/task-overview.component";
+import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from "../../filters/filters.component";
+import { SortersComponent } from "../../sorters/sorters.component";
 
 
 @Component({
   selector: 'app-task-table',
   standalone: true,
   imports: [
+    FormsModule,
     CommonModule,
     MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatNativeDateModule, MatDatepickerModule,
     TasksComponent,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
     TaskOverviewComponent,
-    FiltersComponent
+    FiltersComponent,
+    SortersComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
@@ -37,7 +41,9 @@ export class TaskTableComponent {
   displayedColumns : string[] = [];
   selectedTask?: Task;
   taskOverviewVisibleflag: boolean = false;
-  optionsVisible: boolean = false;
+  showOptionsFlag: boolean = false;
+  sortersAndFiltesTagParent?: string;
+
 
   constructor(private _dialogManager:DialogService){}
 
@@ -74,10 +80,19 @@ export class TaskTableComponent {
       this.taskOverviewVisibleflag = false;
   }
 
-    showOptions():void{
-      if (this.optionsVisible === false)
-        this.optionsVisible = true;
-      else if (this.optionsVisible === true)
-        this.optionsVisible = false;
+    showOptions(event: Event):void{
+      if (this.showOptionsFlag === false)
+      {
+        this.showOptionsFlag = true;
+        this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
+      }
+        
+      else if (this.showOptionsFlag === true)
+      {
+        this.showOptionsFlag = false;
+        this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
+      }
+        
     }
+    
 }
