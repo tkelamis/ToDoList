@@ -1,5 +1,6 @@
 <app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
 
+
 <div class="task-table-filter-outer-container">
 <div class="task-table-filter-inner-container">
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Sort By</div>
@@ -92,3 +93,13 @@
   <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
     <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
   </div>
+
+  <!-- <div>
+    <button (click)="showMeTheTextValueOfChild()">showMeTheTextValueOfChild</button>
+  </div> -->
+
+  <!-- <div>
+    <app-task-reminder>
+      <p>{{letsWatchChild()?.text}}</p>
+    </app-task-reminder>
+  </div> -->

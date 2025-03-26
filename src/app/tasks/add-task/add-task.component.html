@@ -23,7 +23,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Choose a date</mat-label>
-      <input matInput 
+      <input matInput #letsSee
       [matDatepicker]="picker"
       formControlName="date"
       placeholder="Date">
@@ -54,4 +54,6 @@
     
     
   </form>
+
+  <button (click)="showMeTheValueOfInput(letsSee)">Im here</button>
 </div>

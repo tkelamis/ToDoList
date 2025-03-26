@@ -3,7 +3,7 @@ import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
 import { TasksComponent } from '../tasks/tasks.component';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, viewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -17,6 +17,7 @@ import { TaskOverviewComponent } from "../task-overview/task-overview.component"
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from "../../filters/filters.component";
 import { SortersComponent } from "../../sorters/sorters.component";
+import { TaskReminderComponent } from "../task-reminder/task-reminder.component";
 
 
 @Component({
@@ -36,7 +37,8 @@ import { SortersComponent } from "../../sorters/sorters.component";
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
 })
-export class TaskTableComponent {
+export class TaskTableComponent implements AfterViewInit {
+
   receivedTasks: Task[] = [];
   displayedColumns : string[] = [];
   selectedTask?: Task;
@@ -44,10 +46,19 @@ export class TaskTableComponent {
   showOptionsFlag: boolean = false;
   sortersAndFiltesTagParent?: string;
 
+  @ViewChild(TaskReminderComponent) letsWatchChild?: TaskReminderComponent
+
+  ngAfterViewInit(){
+  }
+
+  showMeTheTextValueOfChild() {
+    console.log(this.letsWatchChild?.text)
+  }
 
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
+    
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -94,5 +105,7 @@ export class TaskTableComponent {
       }
         
     }
+
+
     
 }

@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding-top:50px;
+    padding:50px 0 20px 0;
     margin:0 auto;
 }
 
@@ -28,6 +28,12 @@
 
   
 
+  .dialog-buttons-container{
+    display: flex;
+    width: 20rem;
+    justify-content: space-around;
+  }
+
   .dialog-save-button{
   background: linear-gradient(45deg, #2c5726, #29a833) ;
   }
@@ -35,9 +41,6 @@
   .dialog-valid-save-button:hover{
     background: linear-gradient(45deg, #2c5726, #023306) ;
   }
-  
-  
-
   .dialog-invalid-save-button:hover{
     cursor: not-allowed;
   }

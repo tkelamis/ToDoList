@@ -13,7 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
   selector: 'app-edit-task',
   imports: [ReactiveFormsModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule,
-    NgFor, NgIf, NgClass],
+    NgIf, NgClass],
   templateUrl: './edit-task.component.html',
   styleUrl: './edit-task.component.css'
 })

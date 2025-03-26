@@ -1,5 +1,6 @@
 
-<div class="tasks-overview-container font-and-size">
+<!-- Example with ngIF -->
+<!-- <div class="tasks-overview-container font-and-size">
 
     <div *ngIf="_tasksList.length === 0" >
         <p>You have no tasks</p>
@@ -18,5 +19,31 @@
             <li *ngIf="numberOfInProgressTasks > 1">You have {{numberOfInProgressTasks}} tasks in progress</li>
         </ul>
     </div>
+</div> -->
+
+
+<!-- Example with If-Else -->
+<div class="tasks-overview-container font-and-size">
+    @if(_tasksList.length <= 0){
+        <p>You have no tasks</p>
+    }
+    @else if(_tasksList.length > 0) {
+        <ul>
+            @if(_tasksList.length >= 2){<li>Your highest priorities at the moment are tasks with the name "{{_tasksList[0].name}}" and "{{_tasksList[1].name}}"</li>}
+
+            @if(_tasksList.length === 1){<li>Your highest priority is task "{{_tasksList[0].name}}"</li>}
+           
+            @if(numberOfInProgressTasks; as inProgressTasks){<li>You have {{inProgressTasks}} not completed tasks in total</li>}
+            @else {<li>All your tasks are completed</li>}
+
+            @if(numberOfCompletedTasks ===1){<li>You have completed {{numberOfCompletedTasks}} task</li>}
+            @else {<li>You don't have any completed tasks</li>}
+
+            @if(numberOfInProgressTasks <= 0) {<li>You dont have any tasks in progress</li>}
+            @else if (numberOfInProgressTasks === 1) {<li>You have 1 task in progress</li>}
+            @else if (numberOfInProgressTasks > 1) {<li>You have {{numberOfInProgressTasks}} tasks in progress</li>}
+        </ul>
+    }
 </div>
+
 

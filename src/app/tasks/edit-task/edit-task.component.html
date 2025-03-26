@@ -8,15 +8,7 @@
                 formControlName="name">
         <mat-error class="error-message">The task name is mandatory</mat-error>
       </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Completed</mat-label>
-        <mat-select formControlName="completed">
-            <mat-option [value]="true">Yes</mat-option>
-            <mat-option [value]="false">No</mat-option>
-          </mat-select>
-        <mat-error class="error-message">The task name is mandatory</mat-error>
-      </mat-form-field>
+      
   
       <mat-form-field appearance="fill">
         <mat-label>Cost</mat-label>
@@ -48,21 +40,28 @@
       <mat-form-field appearance="fill">
         <mat-label>Priority</mat-label>
         <mat-select formControlName="priority">
-          <mat-option *ngFor="let level of priorityLevels" [value]="level">
-            {{ level }}
-          </mat-option>
+          <!-- Example with @ngFor -> 
+           <mat-option *ngFor="let level of priorityLevels" [value]="level"> -->
+          <!-- Example with @for -->
+            @for(level of priorityLevels; track level){
+              <mat-option [value]="level">
+                {{ level }}
+              </mat-option>
+            }
         </mat-select>
       </mat-form-field>
-  
-        <button 
-        type="button"
-        [ngClass]="{
-          'dialog-valid-save-button': myReactiveForm.valid,
-          'dialog-invalid-save-button': myReactiveForm.invalid
-          }"
-        [disabled]="myReactiveForm.invalid">Save
-        </button>
 
-        <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
     </form>
+    <div class="dialog-buttons-container">
+      <button 
+      type="button"
+      [ngClass]="{
+        'dialog-valid-save-button': myReactiveForm.valid,
+        'dialog-invalid-save-button': myReactiveForm.invalid
+        }"
+      [disabled]="myReactiveForm.invalid">Save
+      </button>
+
+      <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
+    </div>
 </div>

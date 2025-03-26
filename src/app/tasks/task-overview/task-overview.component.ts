@@ -4,7 +4,7 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-task-overview',
-  imports: [NgIf],
+  imports: [],
   templateUrl: './task-overview.component.html',
   styleUrl: './task-overview.component.css'
 })
@@ -29,6 +29,7 @@ export class TaskOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.getNumberOfCompletedTasks();
     this.getNumberOfInProgressTasks();
+    console.log(this.numberOfInProgressTasks)
   }
 
   getNumberOfCompletedTasks(): void{
@@ -36,6 +37,6 @@ export class TaskOverviewComponent implements OnInit {
   }
 
   getNumberOfInProgressTasks(): void{
-    this.numberOfInProgressTasks = this._tasksList.filter(task => task.completionPercentage > 0).length;
+    this.numberOfInProgressTasks = this._tasksList.length - this._tasksList.filter(task => task.completed).length;
   }
 }
