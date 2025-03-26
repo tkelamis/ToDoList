@@ -24,15 +24,11 @@ import { TaskReminderComponent } from "../task-reminder/task-reminder.component"
   selector: 'app-task-table',
   standalone: true,
   imports: [
-    FormsModule,
-    CommonModule,
+    FormsModule, CommonModule,
     MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatNativeDateModule, MatDatepickerModule,
-    TasksComponent,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    TaskOverviewComponent,
-    FiltersComponent,
-    SortersComponent
+    TaskOverviewComponent, SortersComponent, FiltersComponent, TasksComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'

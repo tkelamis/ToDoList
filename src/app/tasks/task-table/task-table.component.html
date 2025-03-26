@@ -19,16 +19,6 @@
 </div>
 
 
-<!-- <div class="task-table-filter-container">
-  <div class="task-table-filter-button-container" appTaskHoverHighlight>
-    <a class="task-table-filter-button" (click)="showOptions()">Filter By</a>
-  </div>
-  <app-filters 
-  [showOptionsFlagChild]="showOptionsFlag"
-  [(listToFilter)]="receivedTasks" ></app-filters>
-</div> -->
-
-
   <table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
     <!-- Task Name Column -->
     <ng-container matColumnDef="name">
@@ -93,13 +83,3 @@
   <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
     <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
   </div>
-
-  <!-- <div>
-    <button (click)="showMeTheTextValueOfChild()">showMeTheTextValueOfChild</button>
-  </div> -->
-
-  <!-- <div>
-    <app-task-reminder>
-      <p>{{letsWatchChild()?.text}}</p>
-    </app-task-reminder>
-  </div> -->
