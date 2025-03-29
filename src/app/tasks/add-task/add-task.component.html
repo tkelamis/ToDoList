@@ -43,9 +43,10 @@
     <div class="dialog-buttons">
       <button 
       type="button"
+      class="dialog-generic"
       [ngClass]="{
-        'dialog-generic dialog-valid-save-button': myReactiveForm.valid,
-        'dialog-generic dialog-invalid-save-button': myReactiveForm.invalid
+        'dialog-valid-save-button': myReactiveForm.valid,
+        'dialog-invalid-save-button': myReactiveForm.invalid
         }"
       [disabled]="myReactiveForm.invalid">Save
       </button>

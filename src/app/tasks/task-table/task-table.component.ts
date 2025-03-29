@@ -1,4 +1,4 @@
-import { Task } from './../../interfaces/task';
+import { Task, TaskPriority } from './../../interfaces/task';
 import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
@@ -54,16 +54,13 @@ export class TaskTableComponent implements AfterViewInit {
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
-    
+    this.setDisplayedColumnsTitles();
   }
 
   handleUpdatedTasks(tasks:Task[]){
     if ( tasks && tasks.length > 0 ){
       this.receivedTasks = tasks;
       this.setDisplayedColumnsTitles();
-    }
-    else{
-      throw new Error("There are no tasks received by the task table component");
     }
   }
 
@@ -77,7 +74,21 @@ export class TaskTableComponent implements AfterViewInit {
   }
 
   setDisplayedColumnsTitles(){
-      this.displayedColumns = Object.keys(this.receivedTasks[0])
+    if (this.receivedTasks.length === 0) {
+      this.receivedTasks = [this.createDummyTask()];
+    }
+      this.displayedColumns = Object.keys(this.createDummyTask());
+  }
+
+  createDummyTask(): Task {
+    return {
+      name: 'No tasks available',
+      completed: false,
+      cost: 0,
+      date: new Date(),
+      completionPercentage: 0,
+      priority: 'Unkown' as TaskPriority
+    };
   }
 
   taskOverviewVisible(){
@@ -87,20 +98,19 @@ export class TaskTableComponent implements AfterViewInit {
       this.taskOverviewVisibleflag = false;
   }
 
-    showOptions(event: Event):void{
-      if (this.showOptionsFlag === false)
-      {
-        this.showOptionsFlag = true;
-        this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
-      }
-        
-      else if (this.showOptionsFlag === true)
-      {
-        this.showOptionsFlag = false;
-        this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
-      }
-        
+  showOptions(event: Event):void{
+    if (this.showOptionsFlag === false)
+    {
+      this.showOptionsFlag = true;
+      this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
     }
+      
+    else if (this.showOptionsFlag === true)
+    {
+      this.showOptionsFlag = false;
+      this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
+    }
+  }
 
 
     
