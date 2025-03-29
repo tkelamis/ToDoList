@@ -3,7 +3,7 @@ import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
 import { TasksComponent } from '../tasks/tasks.component';
-import { AfterViewInit, Component, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, Component, signal, ViewChild, viewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -33,28 +33,30 @@ import { TaskReminderComponent } from "../task-reminder/task-reminder.component"
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
 })
-export class TaskTableComponent implements AfterViewInit {
+export class TaskTableComponent{
 
   receivedTasks: Task[] = [];
   displayedColumns : string[] = [];
   selectedTask?: Task;
   taskOverviewVisibleflag: boolean = false;
-  showOptionsFlag: boolean = false;
-  sortersAndFiltesTagParent?: string;
+  showSortOptionsFlag = signal(false);
+  showFilterOptionsFlag = signal(false);
+  showOptionFlag = signal(false);
+  sortersOrFiltesSelected?: string;
 
-  @ViewChild(TaskReminderComponent) letsWatchChild?: TaskReminderComponent
-
-  ngAfterViewInit(){
-  }
-
-  showMeTheTextValueOfChild() {
-    console.log(this.letsWatchChild?.text)
-  }
+  firstName = signal("Anastasios");
 
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
     this.setDisplayedColumnsTitles();
+    console.log(this.firstName());
+    this.signalChangeValue();
+    console.log(this.firstName());
+  }
+
+  signalChangeValue(){
+    this.firstName.update(name => name.toUpperCase())
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -98,20 +100,16 @@ export class TaskTableComponent implements AfterViewInit {
       this.taskOverviewVisibleflag = false;
   }
 
-  showOptions(event: Event):void{
-    if (this.showOptionsFlag === false)
-    {
-      this.showOptionsFlag = true;
-      this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
+
+  showOptions(event: Event){
+    const selection = (event.target as HTMLElement).textContent?.trim();
+
+    if (this.sortersOrFiltesSelected !== selection){
+      this.showOptionFlag.set(true);
     }
-      
-    else if (this.showOptionsFlag === true)
-    {
-      this.showOptionsFlag = false;
-      this.sortersAndFiltesTagParent = (event.target as HTMLElement).textContent?.trim();
+    else{
+      this.showOptionFlag.update((flag) => !flag);
     }
+    this.sortersOrFiltesSelected = selection;
   }
-
-
-    
 }

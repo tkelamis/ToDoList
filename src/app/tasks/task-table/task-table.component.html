@@ -7,13 +7,12 @@
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Filter By</div>
 </div>
   <app-filters 
-  *ngIf="sortersAndFiltesTagParent ==='Sort By'"
-  [showOptionsFlagChild]="showOptionsFlag"
+  *ngIf="sortersOrFiltesSelected ==='Sort By' && this.showOptionFlag()"
   [(listToFilter)]="receivedTasks"
    ></app-filters>
 
    <app-sorters 
-  *ngIf="sortersAndFiltesTagParent ==='Filter By'"
+  *ngIf="sortersOrFiltesSelected ==='Filter By' && this.showOptionFlag()"
    ></app-sorters>
 
 </div>

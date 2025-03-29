@@ -34,7 +34,7 @@
             @if(_tasksList.length === 1){<li>Your highest priority is task "{{_tasksList[0].name}}"</li>}
            
             @if(numberOfInProgressTasks; as inProgressTasks){<li>You have {{inProgressTasks}} not completed tasks in total</li>}
-            @else {<li>All your tasks are completed</li>}
+            @else {<li>🎉 All tasks are completed!</li>}
 
             @if(numberOfCompletedTasks ===1){<li>You have completed {{numberOfCompletedTasks}} task</li>}
             @else {<li>You don't have any completed tasks</li>}
