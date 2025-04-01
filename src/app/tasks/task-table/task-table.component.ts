@@ -3,7 +3,7 @@ import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
 import { TasksComponent } from '../tasks/tasks.component';
-import { AfterViewInit, Component, signal, ViewChild, viewChild } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -17,7 +17,6 @@ import { TaskOverviewComponent } from "../task-overview/task-overview.component"
 import { FormsModule } from '@angular/forms';
 import { FiltersComponent } from "../../filters/filters.component";
 import { SortersComponent } from "../../sorters/sorters.component";
-import { TaskReminderComponent } from "../task-reminder/task-reminder.component";
 
 
 @Component({
@@ -38,25 +37,14 @@ export class TaskTableComponent{
   receivedTasks: Task[] = [];
   displayedColumns : string[] = [];
   selectedTask?: Task;
-  taskOverviewVisibleflag: boolean = false;
-  showSortOptionsFlag = signal(false);
-  showFilterOptionsFlag = signal(false);
+  taskOverviewVisibleflag = signal(false);
   showOptionFlag = signal(false);
   sortersOrFiltesSelected?: string;
-
-  firstName = signal("Anastasios");
 
   constructor(private _dialogManager:DialogService){}
 
   ngOnInit(): void {
     this.setDisplayedColumnsTitles();
-    console.log(this.firstName());
-    this.signalChangeValue();
-    console.log(this.firstName());
-  }
-
-  signalChangeValue(){
-    this.firstName.update(name => name.toUpperCase())
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -82,24 +70,9 @@ export class TaskTableComponent{
       this.displayedColumns = Object.keys(this.createDummyTask());
   }
 
-  createDummyTask(): Task {
-    return {
-      name: 'No tasks available',
-      completed: false,
-      cost: 0,
-      date: new Date(),
-      completionPercentage: 0,
-      priority: 'Unkown' as TaskPriority
-    };
-  }
-
   taskOverviewVisible(){
-    if (this.taskOverviewVisibleflag === false)
-      this.taskOverviewVisibleflag = true;
-    else if (this.taskOverviewVisibleflag === true)
-      this.taskOverviewVisibleflag = false;
+    this.taskOverviewVisibleflag.update((flag) => !flag);
   }
-
 
   showOptions(event: Event){
     const selection = (event.target as HTMLElement).textContent?.trim();
@@ -111,5 +84,16 @@ export class TaskTableComponent{
       this.showOptionFlag.update((flag) => !flag);
     }
     this.sortersOrFiltesSelected = selection;
+  }
+
+  createDummyTask(): Task {
+    return {
+      name: 'No tasks available',
+      completed: false,
+      cost: 0,
+      date: new Date(),
+      completionPercentage: 0,
+      priority: 'Unkown' as TaskPriority
+    };
   }
 }

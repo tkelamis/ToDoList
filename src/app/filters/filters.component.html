@@ -1,9 +1,9 @@
 
 <div class="filters-options-container">
-    <div class="filters-options-input" appTaskHoverHighlight (click)="sortListByCost()">By Name</div>
-    <div class="filters-options-input" appTaskHoverHighlight (click)="sortListByStatus()">By Status</div>
-    <div class="filters-options-input" appTaskHoverHighlight (click)="sortListByCost()">By Cost</div>
-    <div class="filters-options-input" appTaskHoverHighlight (click)="sortListByDate()">By Date Inserted</div>
-    <div class="filters-options-input" appTaskHoverHighlight (click)="sortListByPriority()">By Priority</div>
+    <div class="filters-options-input" appTaskHoverHighlight (click)="sortList($event)">By Name</div>
+    <div class="filters-options-input" appTaskHoverHighlight (click)="sortList($event)">By Status</div>
+    <div class="filters-options-input" appTaskHoverHighlight (click)="sortList($event)">By Cost</div>
+    <div class="filters-options-input" appTaskHoverHighlight (click)="sortList($event)">By Date Inserted</div>
+    <div class="filters-options-input" appTaskHoverHighlight (click)="sortList($event)">By Priority</div>
     <div class="filters-options-input" style="background-color: rgb(159 217 126);" appTaskHoverHighlight (click)="reset()">Reset</div>
 </div>

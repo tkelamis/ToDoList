@@ -6,6 +6,7 @@
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Sort By</div>
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Filter By</div>
 </div>
+
   <app-filters 
   *ngIf="sortersOrFiltesSelected ==='Sort By' && this.showOptionFlag()"
   [(listToFilter)]="receivedTasks"
@@ -74,6 +75,6 @@
   
   <a class="overview-anchor" (click)="taskOverviewVisible()"> Task overview</a>
 
-  <div *ngIf="taskOverviewVisibleflag && this.receivedTasks">
+  <div *ngIf="taskOverviewVisibleflag() && this.receivedTasks">
     <app-task-overview [tasksList]="receivedTasks"></app-task-overview>
   </div>
