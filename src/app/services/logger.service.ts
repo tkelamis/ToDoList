@@ -1,16 +1,20 @@
-import { effect, Injectable, Injector, signal } from '@angular/core';
+import { computed, effect, Injectable, Injector, signal } from '@angular/core';
 import { Task } from '../interfaces/task';
+import { ILogger } from '../interfaces/ILogger';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoggerService {
+export class LoggerService implements ILogger {
   sortedlist = signal<Task[]>([]);
   filteredList = signal<Task[]>([]);
+  sortedListCounter = computed(() => {
+    return this.sortedlist().length;
+  })
 
     constructor(private injector: Injector) {
         effect(() => {
-          console.log("The sorted list signal updated to:", this.sortedlist());
+          console.log("The sorted list signal updated to:", this.sortedlist(), "and has ",this.sortedListCounter()," items");
         })
 
       effect(() => {
@@ -18,11 +22,12 @@ export class LoggerService {
         })
       }
 
-    logSortedList(tasks: Task[]): void {
-      this.sortedlist.set(tasks);
-    }
+  logSortedList(tasks: Task[]): void {
+    this.sortedlist.set(tasks);
+  }
+    
+  logFilteredList(tasks: Task[]): void {
+    this.filteredList.set(tasks);
+  }
 
-    logFilteredList(tasks: Task[]): void {
-      this.filteredList.set(tasks);
-    }
 }
