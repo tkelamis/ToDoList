@@ -1,3 +1,4 @@
+import { LoggerService } from './../services/logger.service';
 import { ListUtilityService } from './../services/list-utility.service';
 import { Component, Input, OnInit, Output, signal } from '@angular/core';
 import { Task } from '../interfaces/task';
@@ -18,9 +19,11 @@ export class FiltersComponent implements OnInit {
   @Output() listToFilterChange = new EventEmitter<Task[]>();
   firstAcceptedList: Task[] = [];
   _listUtility: ListUtilityService;
+  _loggerService: LoggerService;
 
-  constructor(listUtility: ListUtilityService){
+  constructor(listUtility: ListUtilityService, loggerService: LoggerService){
     this._listUtility = listUtility;
+    this._loggerService = loggerService;
   }
 
   ngOnInit(): void {
@@ -31,8 +34,9 @@ export class FiltersComponent implements OnInit {
     const selection = (event.target as HTMLElement).textContent?.replace(/\s+/g, '');
 
     if(selection){
-      const sortedList = this._listUtility.sortList(selection, this.listToFilter)
+      const sortedList = this._listUtility.sortList(selection, this.listToFilter);
       this.listToFilterChange.emit(sortedList);
+      this._loggerService.logSortedList(sortedList);
     }
   }
 

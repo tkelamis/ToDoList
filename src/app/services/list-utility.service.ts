@@ -13,7 +13,7 @@ export class ListUtilityService {
       case 'ByCost':
         return [...listToFilter].sort((a, b) => b.cost - a.cost);
       case 'ByName':
-          return [...listToFilter].sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+          return [...listToFilter].sort((a, b) => a.name.localeCompare(b.name));
       case 'ByStatus':
         return [...listToFilter].sort((a, b) => Number(b.completed) - Number(a.completed));
       case 'ByDateInserted':
