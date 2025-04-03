@@ -22,12 +22,9 @@ export class LoggerService implements ILogger {
         })
       }
 
-  logSortedList(tasks: Task[]): void {
-    this.sortedlist.set(tasks);
-  }
-    
-  logFilteredList(tasks: Task[]): void {
-    this.filteredList.set(tasks);
+  logList(tasks: Task[]): void {
+    //this.sortedlist.set(tasks);
+    console.log("Im sort list logger")
   }
 
 }

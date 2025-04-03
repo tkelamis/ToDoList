@@ -6,6 +6,7 @@ import { Task } from '../interfaces/task';
 import { EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.directive';
+import { FilterLoggerService } from '../services/filter-logger.service';
 
 @Component({
   selector: 'app-filters',
@@ -14,7 +15,7 @@ import { TaskHoverHighlightDirective } from '../directives/task-hover-highlight.
   styleUrl: './filters.component.css',
   providers: [
     ListUtilityService,
-    { provide: 'ILogger', useClass: LoggerService }, // Bind ILogger to ConsoleLogService
+    { provide: 'ILogger', useClass: FilterLoggerService }
   ]
 })
 export class FiltersComponent implements OnInit {
@@ -41,7 +42,7 @@ export class FiltersComponent implements OnInit {
     if(selection){
       const sortedList = this._listUtility.sortList(selection, this.listToFilter);
       this.listToFilterChange.emit(sortedList);
-      this._loggerService.logSortedList(sortedList);
+      this._loggerService.logList(sortedList);
     }
   }
 
