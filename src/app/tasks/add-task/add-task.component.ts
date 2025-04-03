@@ -35,12 +35,9 @@ export class AddTaskComponent implements OnInit {
     });
   }
 
-
-
   closeDialog() {
     this.dialogRef.close();
   }
-
 
   showMeTheValueOfInput(input: HTMLInputElement){
     console.log(input.value)

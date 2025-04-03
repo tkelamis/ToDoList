@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../interfaces/task';
+import { IListUtility } from '../interfaces/ilist-utility';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListUtilityService {
+export class ListUtilityService implements IListUtility {
 
   constructor() { }
 

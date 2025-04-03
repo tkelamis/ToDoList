@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
   }
 
 
-  //example of ChangeDetectorRef usage and how to trigger on/off the change detection cycle
+  //example of ChangeDetectorRef usage and how to toggle on/off the change detection cycle
   
   /* vari = "Kelamis";
   constructor(private cdr: ChangeDetectorRef){
