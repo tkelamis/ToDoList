@@ -1,6 +1,3 @@
-<app-tasks (tasksUpdated)="handleUpdatedTasks($event)"></app-tasks>
-
-
 <div class="task-table-filter-outer-container">
 <div class="task-table-filter-inner-container">
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Sort By</div>
@@ -20,13 +17,6 @@
 
 
   <table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Task Name </th>
-      
-      <td mat-cell *matCellDef="let task"> {{ task.name }} </td>
-    </ng-container>
-
 
     <!-- Task Name Column -->
     <ng-container matColumnDef="name">
@@ -74,7 +64,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     </thead>
     <tbody>
-      <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"  appTaskHoverHighlight (click)="onTaskClick('openEditWindow',i)"></tr>
+      <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"  appTaskHoverHighlight (click)="onTaskClick(i)"></tr>
       
     </tbody>
   </table>

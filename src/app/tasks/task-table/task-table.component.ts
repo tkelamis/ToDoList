@@ -2,7 +2,6 @@ import { Task, TaskPriority } from './../../interfaces/task';
 import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
-import { TasksComponent } from '../tasks/tasks.component';
 import { Component, OnChanges, signal, SimpleChanges } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -18,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { SorterComponent } from "../../sorters/sorter.component";
 import { FilterComponent } from "../../filter/filter.component";
 import { TasksService } from '../../services/tasks.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,13 +28,12 @@ import { TasksService } from '../../services/tasks.service';
     MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatNativeDateModule, MatDatepickerModule,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    TaskOverviewComponent, SorterComponent, FilterComponent, TasksComponent
+    TaskOverviewComponent, SorterComponent, FilterComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
 })
 export class TaskTableComponent{
-
   receivedTasks: Task[] = [];
   displayedColumns : string[] = [];
   selectedTask?: Task;
@@ -46,32 +45,18 @@ export class TaskTableComponent{
 
 
   ngOnInit(): void {
-    this.setDisplayedColumnsTitles();
-    this._tasksManager.logTasks();
-  }
-
-  handleUpdatedTasks(tasks:Task[]){
-    if ( tasks && tasks.length > 0 ){
+    this._tasksManager.tasks$.subscribe(tasks =>{
       this.receivedTasks = tasks;
-      this.setDisplayedColumnsTitles();
-    }
+    })
+    this.setDisplayedColumnsTitles();
   }
 
-  onTaskClick(value: string, taskFromTable: number){
-    this.selectedTask = this.receivedTasks[taskFromTable];
-    this._dialogManager.openTaskForm(value, this.selectedTask);
-    
+  onTaskClick(index: number){
+    this._dialogManager.openEditTaskForm(index);
   }
 
   onAddTaskClick(value:string){
-    this._dialogManager.openTaskForm(value);
-  }
-
-  setDisplayedColumnsTitles(){
-    if (this.receivedTasks.length === 0) {
-      this.receivedTasks = [this.createDummyTask()];
-    }
-      this.displayedColumns = Object.keys(this.createDummyTask());
+    //this._dialogManager.openTaskForm(value);
   }
 
   taskOverviewVisible(){
@@ -92,7 +77,6 @@ export class TaskTableComponent{
 
   createDummyTask(): Task {
     return {
-      id: 0,
       name: 'No tasks available',
       completed: false,
       cost: 0,
@@ -100,5 +84,12 @@ export class TaskTableComponent{
       completionPercentage: 0,
       priority: 'Unkown' as TaskPriority
     };
+  }
+
+  setDisplayedColumnsTitles(){
+    if (this.receivedTasks.length === 0) {
+      this.receivedTasks = [this.createDummyTask()];
+    }
+      this.displayedColumns = Object.keys(this.createDummyTask());
   }
 }

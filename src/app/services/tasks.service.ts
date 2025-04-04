@@ -1,34 +1,37 @@
 import { subscribe } from 'diagnostics_channel';
 import { Injectable } from '@angular/core';
 import { Task, TaskPriority } from '../interfaces/task';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
-  tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(
-    [
-      { id:1, name: 'mpempis', completed: false, cost:10.458, date: new Date('2026-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
-      { id:2, name: 'gogo', completed: false, cost:553.458, date: new Date('2023-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
-      { id:3, name: 'kelamis', completed: false, cost:5, date: new Date('2025-02-11'), completionPercentage: 100, priority: TaskPriority.Unknown }
-    ]
-  )
   tasks: Task[] = [];
 
-  constructor() { }
+  tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(
+    [
+      { name: 'mpempis', completed: false, cost:10.458, date: new Date('2026-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
+      { name: 'gogo', completed: true, cost:553.458, date: new Date('2023-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
+      { name: 'kelamis', completed: false, cost:5, date: new Date('2025-02-11'), completionPercentage: 100, priority: TaskPriority.Unknown }
+    ]
+  )
 
   get tasks$(){
     return this.tasksSubject.asObservable();
   }
 
-
-  logTasks(){
-    this.tasks$.subscribe(tasks =>{
-      console.log(tasks)
-    });
+  getTaskFromTable(index: number): Observable<Task>{
+    return this.tasks$.pipe(
+      filter(tasks => tasks.length > 0),
+      map(tasks => tasks[index])
+    );
   }
 
-
+  updateTask(index: number, updatedTask: Task): void {
+    const tasks = [...this.tasksSubject.value];
+    tasks[index] = { ...tasks[index], ...updatedTask };
+    this.tasksSubject.next(tasks);
+  }
 }
