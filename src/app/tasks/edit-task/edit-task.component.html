@@ -1,67 +1,68 @@
 <div class="dialog-popup">
     <div class="dialog-generic dialog-title">Edit Task</div>
-    <form [formGroup]="myReactiveForm" class="dialog-form">
+    <form [formGroup]="myReactiveForm" class="dialog-form-container" (ngSubmit)="onSubmit()">
+      <div class="dialog-form">
+        <mat-form-field appearance="fill">
+          <mat-label>Task Name</mat-label>
+          <input matInput
+                  formControlName="name">
+          <mat-error class="error-message">The task name is mandatory</mat-error>
+        </mat-form-field>
+        
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Cost</mat-label>
+          <input matInput 
+          formControlName="cost"/>
+          <span style="padding-right: 1rem;" matSuffix>€</span>
+          <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('required') && myReactiveForm.get('cost')?.touched">The cost is mandatory</mat-error>
+          <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched"> Invalid format. Please enter a valid number.</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput 
+          [matDatepicker]="picker"
+          formControlName="date"
+          placeholder="Date">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
   
-      <mat-form-field appearance="fill">
-        <mat-label>Task Name</mat-label>
-        <input matInput
-                formControlName="name">
-        <mat-error class="error-message">The task name is mandatory</mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Progress</mat-label>
+          <input matInput
+                  formControlName="progress">
+          <span style="padding-right: 1rem;" matSuffix>%</span>
+          <mat-error *ngIf="myReactiveForm.get('progress')?.hasError('pattern') && myReactiveForm.get('progress')?.touched"> Invalid format. Please enter up to 2 digits.</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+          <mat-label>Priority</mat-label>
+          <mat-select formControlName="priority">
+            <!-- Example with @ngFor -> 
+             <mat-option *ngFor="let level of priorityLevels" [value]="level"> -->
+            <!-- Example with @for -->
+              @for(level of priorityLevels; track level){
+                <mat-option [value]="level">
+                  {{ level }}
+                </mat-option>
+              }
+          </mat-select>
+        </mat-form-field>
+      </div>
       
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Cost</mat-label>
-        <input matInput 
-        formControlName="cost"/>
-        <span style="padding-right: 1rem;" matSuffix>€</span>
-        <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('required') && myReactiveForm.get('cost')?.touched">The cost is mandatory</mat-error>
-        <mat-error *ngIf="myReactiveForm.get('cost')?.hasError('pattern') && myReactiveForm.get('cost')?.touched"> Invalid format. Please enter a valid number.</mat-error>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <input matInput 
-        [matDatepicker]="picker"
-        formControlName="date"
-        placeholder="Date">
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Progress</mat-label>
-        <input matInput
-                formControlName="progress">
-        <span style="padding-right: 1rem;" matSuffix>%</span>
-        <mat-error *ngIf="myReactiveForm.get('progress')?.hasError('pattern') && myReactiveForm.get('progress')?.touched"> Invalid format. Please enter up to 2 digits.</mat-error>
-      </mat-form-field>
+      <div class="dialog-buttons-container">
+        <button 
+        type="submit"
+        [ngClass]="{'dialog-valid-save-button': myReactiveForm.valid, 'dialog-invalid-save-button': myReactiveForm.invalid}"
+        [disabled]="myReactiveForm.invalid">Save
+        </button>
   
-      <mat-form-field appearance="fill">
-        <mat-label>Priority</mat-label>
-        <mat-select formControlName="priority">
-          <!-- Example with @ngFor -> 
-           <mat-option *ngFor="let level of priorityLevels" [value]="level"> -->
-          <!-- Example with @for -->
-            @for(level of priorityLevels; track level){
-              <mat-option [value]="level">
-                {{ level }}
-              </mat-option>
-            }
-        </mat-select>
-      </mat-form-field>
+        <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
+      </div>
 
     </form>
-    <div class="dialog-buttons-container">
-      <button 
-      type="button"
-      [ngClass]="{
-        'dialog-valid-save-button': myReactiveForm.valid,
-        'dialog-invalid-save-button': myReactiveForm.invalid
-        }"
-      [disabled]="myReactiveForm.invalid">Save
-      </button>
-
-      <button type="button" class="dialog-generic dialog-back-button" (click)=closeDialog()>Back</button>
-    </div>
+    
 </div>

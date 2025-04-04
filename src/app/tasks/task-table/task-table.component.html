@@ -7,19 +7,27 @@
   <div class="task-table-filter-filters-options-input" appTaskHoverHighlight (click)="showOptions($event)">Filter By</div>
 </div>
 
-  <app-filters 
+  <app-sorter 
   *ngIf="sortersOrFiltesSelected ==='Sort By' && this.showOptionFlag()"
   [(listToFilter)]="receivedTasks"
-   ></app-filters>
+   ></app-sorter>
 
-   <app-sorters 
+   <app-filter 
   *ngIf="sortersOrFiltesSelected ==='Filter By' && this.showOptionFlag()"
-   ></app-sorters>
+   ></app-filter>
 
 </div>
 
 
   <table mat-table [dataSource]="receivedTasks" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Task Name </th>
+      
+      <td mat-cell *matCellDef="let task"> {{ task.name }} </td>
+    </ng-container>
+
+
     <!-- Task Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Task Name </th>
@@ -67,6 +75,7 @@
     </thead>
     <tbody>
       <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"  appTaskHoverHighlight (click)="onTaskClick('openEditWindow',i)"></tr>
+      
     </tbody>
   </table>
   

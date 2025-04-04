@@ -1,5 +1,5 @@
 import { ILogger } from '../interfaces/ILogger';
-import { ListUtilityService } from './../services/list-utility.service';
+import { ListUtilityService } from '../services/list-utility.service';
 import { Component, Inject, Input, OnInit, Output, signal } from '@angular/core';
 import { Task } from '../interfaces/task';
 import { EventEmitter } from '@angular/core';
@@ -11,18 +11,17 @@ import { HTMLContentService } from '../services/htmlcontent.service';
 import { IListUtility } from '../interfaces/ilist-utility';
 
 @Component({
-  selector: 'app-filters',
+  selector: 'app-sorter',
   imports: [FormsModule, TaskHoverHighlightDirective],
-  templateUrl: './filters.component.html',
-  styleUrl: './filters.component.css',
+  templateUrl: './sorter.component.html',
+  styleUrl: './sorter.component.css',
   providers: [
-    ListUtilityService,
     { provide: 'ILogger', useClass: FilterLoggerService },
     { provide: 'IHTMLContent', useClass: HTMLContentService },
     { provide: 'IListUtility', useClass: ListUtilityService }
   ]
 })
-export class FiltersComponent implements OnInit {
+export class SorterComponent implements OnInit {
   
   @Input() showOptionsFlagChild: boolean = false;
   @Input() listToFilter!:Task[];

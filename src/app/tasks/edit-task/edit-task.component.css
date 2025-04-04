@@ -14,6 +14,13 @@
   background: linear-gradient(45deg, #ff0021,  #f921ba , #8600ff);
 }
 
+.dialog-form-container{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .dialog-form{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -76,3 +83,5 @@
     display: inline-block ;
     background: linear-gradient(45deg, #285e20, #97f15a) ;
   }
+
+  

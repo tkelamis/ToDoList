@@ -3,7 +3,7 @@ import { DialogService } from '../../services/dialog.service';
 import { MatIconModule } from '@angular/material/icon';
 import { PriorityLabelPipePipe } from '../../Pipes/priority-label-pipe.pipe';
 import { TasksComponent } from '../tasks/tasks.component';
-import { Component, signal } from '@angular/core';
+import { Component, OnChanges, signal, SimpleChanges } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -15,8 +15,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { TaskOverviewComponent } from "../task-overview/task-overview.component";
 import { FormsModule } from '@angular/forms';
-import { FiltersComponent } from "../../filters/filters.component";
-import { SortersComponent } from "../../sorters/sorters.component";
+import { SorterComponent } from "../../sorters/sorter.component";
+import { FilterComponent } from "../../filter/filter.component";
+import { TasksService } from '../../services/tasks.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ import { SortersComponent } from "../../sorters/sorters.component";
     MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatNativeDateModule, MatDatepickerModule,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    TaskOverviewComponent, SortersComponent, FiltersComponent, TasksComponent
+    TaskOverviewComponent, SorterComponent, FilterComponent, TasksComponent
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
@@ -41,10 +42,12 @@ export class TaskTableComponent{
   showOptionFlag = signal(false);
   sortersOrFiltesSelected?: string;
 
-  constructor(private _dialogManager:DialogService){}
+  constructor(private _dialogManager:DialogService, private _tasksManager: TasksService){}
+
 
   ngOnInit(): void {
     this.setDisplayedColumnsTitles();
+    this._tasksManager.logTasks();
   }
 
   handleUpdatedTasks(tasks:Task[]){
@@ -57,9 +60,10 @@ export class TaskTableComponent{
   onTaskClick(value: string, taskFromTable: number){
     this.selectedTask = this.receivedTasks[taskFromTable];
     this._dialogManager.openTaskForm(value, this.selectedTask);
+    
   }
 
-  onAddTaskClick(value:string):void{
+  onAddTaskClick(value:string){
     this._dialogManager.openTaskForm(value);
   }
 
@@ -88,6 +92,7 @@ export class TaskTableComponent{
 
   createDummyTask(): Task {
     return {
+      id: 0,
       name: 'No tasks available',
       completed: false,
       cost: 0,

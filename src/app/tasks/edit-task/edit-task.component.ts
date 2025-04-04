@@ -1,8 +1,10 @@
+import { DialogRef } from '@angular/cdk/dialog';
+import { DialogService } from './../../services/dialog.service';
 import { Component, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task, TaskPriority } from '../../interfaces/task';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { NgFor, NgIf, NgClass, PercentPipe } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,12 +24,16 @@ export class EditTaskComponent {
   priorityLevels:string[] = Object.keys(TaskPriority);
   receivedTask?: Task;
 
-  constructor(private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<EditTaskComponent>, @Inject(MAT_DIALOG_DATA) public data: { task: Task }){
+  constructor(
+    private _formBuilder: FormBuilder, 
+    private dialogRef: MatDialogRef<EditTaskComponent>, 
+    private dialogService: DialogService,
+    @Inject(MAT_DIALOG_DATA) public data: { task: Task }
+  ){
+    this.receivedTask = this.data.task;
   }
 
   ngOnInit(): void {
-    this.receivedTask = this.data.task;
-
     this.myReactiveForm = this._formBuilder.group({
       name:[this.receivedTask?.name, [Validators.required]],
       completed:[this.receivedTask?.completed,[Validators.required]],
@@ -38,8 +44,15 @@ export class EditTaskComponent {
     });
   }
 
+  onSubmit() {
+    const editedTask: Task = this.myReactiveForm.value;
+    this.dialogService.closeDialog(this.dialogRef, editedTask);
+    console.log(editedTask);
+  }
+
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogService.closeDialog(this.dialogRef, this.myReactiveForm.value);
+    console.log(this.myReactiveForm.value)
   }
 }
 
