@@ -4,7 +4,8 @@ export interface Task {
     cost: number;
     date: Date;
     completionPercentage: number;
-    priority: TaskPriority
+    priority: TaskPriority,
+    forReminder: boolean
 }
 
 

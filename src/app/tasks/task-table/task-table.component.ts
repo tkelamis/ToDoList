@@ -17,7 +17,6 @@ import { FormsModule } from '@angular/forms';
 import { SorterComponent } from "../../sorters/sorter.component";
 import { FilterComponent } from "../../filter/filter.component";
 import { TasksService } from '../../services/tasks.service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,7 +27,7 @@ import { Observable } from 'rxjs';
     MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule, MatNativeDateModule, MatDatepickerModule,
     CompletedHighlightDirective, TaskHoverHighlightDirective,
     PriorityLabelPipePipe,
-    TaskOverviewComponent, SorterComponent, FilterComponent
+    TaskOverviewComponent, SorterComponent, FilterComponent,
 ],
   templateUrl: './task-table.component.html',
   styleUrl: './task-table.component.css'
@@ -40,6 +39,7 @@ export class TaskTableComponent{
   taskOverviewVisibleflag = signal(false);
   showOptionFlag = signal(false);
   sortersOrFiltesSelected?: string;
+  nameToSendToChildTaskReminderComp: string = 'Kelamis';
 
   constructor(private _dialogManager:DialogService, private _tasksManager: TasksService){}
 
@@ -49,6 +49,10 @@ export class TaskTableComponent{
       this.receivedTasks = tasks;
     })
     this.setDisplayedColumnsTitles();
+  }
+
+  ChangeValue(){
+    this.nameToSendToChildTaskReminderComp = 'mpempis';
   }
 
   onTaskClick(index: number){
@@ -82,7 +86,8 @@ export class TaskTableComponent{
       cost: 0,
       date: new Date(),
       completionPercentage: 0,
-      priority: 'Unkown' as TaskPriority
+      priority: 'Unkown' as TaskPriority,
+      forReminder: false
     };
   }
 
@@ -90,6 +95,6 @@ export class TaskTableComponent{
     if (this.receivedTasks.length === 0) {
       this.receivedTasks = [this.createDummyTask()];
     }
-      this.displayedColumns = Object.keys(this.createDummyTask());
+      this.displayedColumns = Object.keys(this.createDummyTask()).filter(key => key !== 'forReminder');
   }
 }

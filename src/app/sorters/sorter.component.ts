@@ -26,6 +26,7 @@ export class SorterComponent implements OnInit {
   @Input() showOptionsFlagChild: boolean = false;
   @Input() listToFilter!:Task[];
   @Output() listToFilterChange = new EventEmitter<Task[]>();
+
   firstAcceptedList: Task[] = [];
 
   constructor(

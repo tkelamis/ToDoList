@@ -24,6 +24,8 @@
 
 <!-- Example with If-Else -->
 <div class="tasks-overview-container font-and-size">
+    <app-task-reminder [receivedList]="_tasksList" (remindersFound)="setRemindersList($event)"></app-task-reminder>
+
     @if(_tasksList.length <= 0){
         <p>You have no tasks</p>
     }
@@ -42,6 +44,9 @@
             @if(numberOfInProgressTasks <= 0) {<li>You dont have any tasks in progress</li>}
             @else if (numberOfInProgressTasks === 1) {<li>You have 1 task in progress</li>}
             @else if (numberOfInProgressTasks > 1) {<li>You have {{numberOfInProgressTasks}} tasks in progress</li>}
+
+            @if(reminders.length <= 0) {<li>You have {{reminders.length}} closing in due date</li>}
+
         </ul>
     }
 </div>

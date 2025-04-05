@@ -12,9 +12,9 @@ export class TasksService {
 
   tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>(
     [
-      { name: 'mpempis', completed: false, cost:10.458, date: new Date('2026-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
-      { name: 'gogo', completed: true, cost:553.458, date: new Date('2023-02-11'), completionPercentage: 20, priority: TaskPriority.Low },
-      { name: 'kelamis', completed: false, cost:5, date: new Date('2025-02-11'), completionPercentage: 100, priority: TaskPriority.Unknown }
+      { name: 'mpempis', completed: false, cost:10.458, date: new Date('2026-02-11'), completionPercentage: 20, priority: TaskPriority.Low, forReminder: true },
+      { name: 'gogo', completed: true, cost:553.458, date: new Date('2023-02-11'), completionPercentage: 20, priority: TaskPriority.Low , forReminder: true },
+      { name: 'kelamis', completed: false, cost:5, date: new Date('2025-02-11'), completionPercentage: 100, priority: TaskPriority.Unknown , forReminder: false }
     ]
   )
 
