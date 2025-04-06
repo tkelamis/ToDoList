@@ -3,16 +3,18 @@ import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { ParentNgComponent } from '../practice/parent-ng/parent-ng.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ 
+  imports: [
     MatCardModule,
-    CommonModule, 
+    CommonModule,
     FooterComponent,
-    RouterOutlet
-    ],
+    RouterOutlet,
+    ParentNgComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

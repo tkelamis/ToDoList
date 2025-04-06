@@ -1,6 +1,6 @@
 import { ILogger } from '../interfaces/ILogger';
 import { ListUtilityService } from '../services/list-utility.service';
-import { Component, Inject, Input, OnInit, Output, signal } from '@angular/core';
+import { Component, Inject, Input, OnInit, Output } from '@angular/core';
 import { Task } from '../interfaces/task';
 import { EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';

@@ -1,5 +1,5 @@
 import { DialogService } from './../../services/dialog.service';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Task, TaskPriority } from '../../interfaces/task';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';

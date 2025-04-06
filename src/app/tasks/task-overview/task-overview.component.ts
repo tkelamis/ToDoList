@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Task, TaskPriority } from '../../interfaces/task';
-import { NgIf } from '@angular/common';
 import { TaskReminderComponent } from "../task-reminder/task-reminder.component";
 
 @Component({

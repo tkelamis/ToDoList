@@ -1,8 +1,6 @@
-import { subscribe } from 'diagnostics_channel';
 import { Injectable } from '@angular/core';
 import { Task, TaskPriority } from '../interfaces/task';
 import { BehaviorSubject, filter, map, Observable } from 'rxjs';
-import { log } from 'console';
 
 @Injectable({
   providedIn: 'root'

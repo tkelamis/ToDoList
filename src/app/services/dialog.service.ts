@@ -1,12 +1,6 @@
-import { Task } from './../interfaces/task';
-import { AddTaskComponent } from './../tasks/add-task/add-task.component';
 import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog'
-import { EditTaskComponent } from './../tasks/edit-task/edit-task.component';
-import { subscribe } from 'diagnostics_channel';
-import { DialogRef } from '@angular/cdk/dialog';
 import { TasksService } from './tasks.service';
-import { Observable } from 'rxjs';
 
 
 @Injectable({

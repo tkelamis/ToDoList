@@ -1,13 +1,9 @@
-import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter, SimpleChange } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, Input, OnChanges, Output, SimpleChanges, EventEmitter } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Task } from '../../interfaces/task';
 import { NgFor } from '@angular/common';
-import { TaskOverviewComponent } from '../task-overview/task-overview.component';
-import { errorMonitor } from 'node:events';
-import { error } from 'node:console';
-
 @Component({
   selector: 'app-task-reminder',
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule,NgFor],
