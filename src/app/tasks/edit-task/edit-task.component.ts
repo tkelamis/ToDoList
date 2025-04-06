@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { TasksService } from '../../services/tasks.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-task',
@@ -24,6 +24,7 @@ export class EditTaskComponent {
   myReactiveForm!: FormGroup;
   priorityLevels:string[] = Object.keys(TaskPriority);
   taskToEdit$: Observable<Task>;
+  taskSubscription?: Subscription;
 
   constructor(
     private _formBuilder: FormBuilder, private dialogRef: MatDialogRef<EditTaskComponent>, private dialogService: DialogService, private _tasksManager: TasksService,
@@ -34,7 +35,7 @@ export class EditTaskComponent {
   }
 
   ngOnInit(): void {
-    this.taskToEdit$.subscribe(task =>
+    this.taskSubscription = this.taskToEdit$.subscribe(task =>
       this.myReactiveForm = this._formBuilder.group({
         name:[task.name, [Validators.required]],
         completed:[task.completed,[Validators.required]],
@@ -53,6 +54,12 @@ export class EditTaskComponent {
 
   closeDialog() {
     this.dialogService.closeDialog(this.dialogRef);
+  }
+
+  ngOnDestroy() {
+    if(this.taskSubscription){
+      this.taskSubscription.unsubscribe();
+    }
   }
 }
 

@@ -31,9 +31,4 @@ export class DialogService {
   closeDialog(dialogRef: MatDialogRef<any>){
     dialogRef.close();
   }
-
-  saveAndCloseDialog(dialogRef: MatDialogRef<any>){
-    this._tasksManager.tasks$.subscribe()
-    dialogRef.close();
-  }
 }

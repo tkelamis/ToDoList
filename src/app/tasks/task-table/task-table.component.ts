@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { SorterComponent } from "../../sorters/sorter.component";
 import { FilterComponent } from "../../filter/filter.component";
 import { TasksService } from '../../services/tasks.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -40,12 +41,13 @@ export class TaskTableComponent{
   showOptionFlag = signal(false);
   sortersOrFiltesSelected?: string;
   nameToSendToChildTaskReminderComp: string = 'Kelamis';
+  tasksSubscription?: Subscription;
 
   constructor(private _dialogManager:DialogService, private _tasksManager: TasksService){}
 
 
   ngOnInit(): void {
-    this._tasksManager.tasks$.subscribe(tasks =>{
+    this.tasksSubscription = this._tasksManager.tasks$.subscribe(tasks =>{
       this.receivedTasks = tasks;
     })
     this.setDisplayedColumnsTitles();
@@ -96,5 +98,11 @@ export class TaskTableComponent{
       this.receivedTasks = [this.createDummyTask()];
     }
       this.displayedColumns = Object.keys(this.createDummyTask()).filter(key => key !== 'forReminder');
+  }
+
+  ngOnDestroy(){
+    if(this.tasksSubscription){
+      this.tasksSubscription.unsubscribe();
+    }
   }
 }
