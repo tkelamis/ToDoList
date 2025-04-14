@@ -1,1 +1,39 @@
-<p>parent-ng works!</p>
+<!-- <button (click)="toggleFlag()">Toggle Flag</button>
+
+
+<ng-template [ngIf]="showChildComponent">
+    <div>
+        <p>parent-ng true</p>
+    </div>
+    <div>
+        <p>parent-ng false</p>
+    </div>
+</ng-template> -->
+
+
+
+<!-- <ng-template #parentDiv>
+    <div>
+        Welcome to our app!
+      </div>
+</ng-template>
+
+
+
+<app-child-ng [receivedDivFromParent]="parentDiv" >
+</app-child-ng> -->
+
+<!-- <button (click)="getTodos()">getTodos</button>
+<button (click)="showTodos()">showTodos</button>
+
+<p></p> -->
+
+
+<button (click)="show = !show">{{ show ? 'hide' : 'show' }}</button>
+<button (click)="switchPrimary()">Switch Primary</button>
+<p>show = {{ show }}</p>
+<br />
+<div *ngIf="show; then thenBlock; else elseBlock">this is ignored</div>
+<ng-template #primaryBlock>Primary text to show</ng-template>
+<ng-template #secondaryBlock>Secondary text to show</ng-template>
+<ng-template #elseBlock>Alternate text while primary text is hidden</ng-template>
